@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		523D0E3218E3B913005C4BB6 /* ClassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3118E3B913005C4BB6 /* ClassTableViewController.m */; };
+		523D0E3518E3B930005C4BB6 /* GradeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3418E3B930005C4BB6 /* GradeTableViewController.m */; };
+		523D0E3B18E3BA0E005C4BB6 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3A18E3BA0E005C4BB6 /* Course.m */; };
+		523D0E3E18E3BA45005C4BB6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3D18E3BA45005C4BB6 /* Grade.m */; };
+		527AB64118E4D1E600F7FEE8 /* UWMLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 527AB64018E4D1E600F7FEE8 /* UWMLogo.png */; };
+		5284650718F39575005FB632 /* GradeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284650618F39575005FB632 /* GradeItemViewController.m */; };
+		52B381B118E4751700B4612E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B018E4751700B4612E /* User.m */; };
+		52B381B418E4791100B4612E /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B318E4791100B4612E /* Score.m */; };
+		52B381B718E47B7600B4612E /* GradeSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B618E47B7600B4612E /* GradeSection.m */; };
+		52BBA63818E3B2BA00762A72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BBA63718E3B2BA00762A72 /* Foundation.framework */; };
+		52BBA63A18E3B2BA00762A72 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BBA63918E3B2BA00762A72 /* CoreGraphics.framework */; };
+		52BBA63C18E3B2BA00762A72 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BBA63B18E3B2BA00762A72 /* UIKit.framework */; };
+		52BBA64218E3B2BA00762A72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52BBA64018E3B2BA00762A72 /* InfoPlist.strings */; };
+		52BBA64418E3B2BA00762A72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BBA64318E3B2BA00762A72 /* main.m */; };
+		52BBA64818E3B2BA00762A72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BBA64718E3B2BA00762A72 /* AppDelegate.m */; };
+		52BBA64B18E3B2BA00762A72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BBA64918E3B2BA00762A72 /* Main.storyboard */; };
+		52BBA64E18E3B2BA00762A72 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BBA64D18E3B2BA00762A72 /* LogInViewController.m */; };
+		52BBA65018E3B2BA00762A72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52BBA64F18E3B2BA00762A72 /* Images.xcassets */; };
+		52BBA65718E3B2BA00762A72 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BBA65618E3B2BA00762A72 /* XCTest.framework */; };
+		52BBA65818E3B2BA00762A72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BBA63718E3B2BA00762A72 /* Foundation.framework */; };
+		52BBA65918E3B2BA00762A72 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BBA63B18E3B2BA00762A72 /* UIKit.framework */; };
+		52BBA66118E3B2BA00762A72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52BBA65F18E3B2BA00762A72 /* InfoPlist.strings */; };
+		52BBA66318E3B2BA00762A72 /* UWMGraderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BBA66218E3B2BA00762A72 /* UWMGraderTests.m */; };
+		52C1038E1907396E00D0D46B /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1038D1907396E00D0D46B /* Parser.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52BBA65A18E3B2BA00762A72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52BBA62C18E3B2BA00762A72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52BBA63318E3B2BA00762A72;
+			remoteInfo = UWMGrader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		523D0E3018E3B913005C4BB6 /* ClassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassTableViewController.h; sourceTree = "<group>"; };
+		523D0E3118E3B913005C4BB6 /* ClassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassTableViewController.m; sourceTree = "<group>"; };
+		523D0E3318E3B930005C4BB6 /* GradeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeTableViewController.h; sourceTree = "<group>"; };
+		523D0E3418E3B930005C4BB6 /* GradeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeTableViewController.m; sourceTree = "<group>"; };
+		523D0E3918E3BA0E005C4BB6 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		523D0E3A18E3BA0E005C4BB6 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		523D0E3C18E3BA45005C4BB6 /* Grade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grade.h; sourceTree = "<group>"; };
+		523D0E3D18E3BA45005C4BB6 /* Grade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grade.m; sourceTree = "<group>"; };
+		527AB64018E4D1E600F7FEE8 /* UWMLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UWMLogo.png; sourceTree = "<group>"; };
+		5284650518F39575005FB632 /* GradeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeItemViewController.h; sourceTree = "<group>"; };
+		5284650618F39575005FB632 /* GradeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeItemViewController.m; sourceTree = "<group>"; };
+		52B381AF18E4751700B4612E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		52B381B018E4751700B4612E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		52B381B218E4791100B4612E /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
+		52B381B318E4791100B4612E /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
+		52B381B518E47B7600B4612E /* GradeSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeSection.h; sourceTree = "<group>"; };
+		52B381B618E47B7600B4612E /* GradeSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeSection.m; sourceTree = "<group>"; };
+		52BBA63418E3B2BA00762A72 /* UWMGrader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UWMGrader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52BBA63718E3B2BA00762A72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		52BBA63918E3B2BA00762A72 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		52BBA63B18E3B2BA00762A72 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		52BBA63F18E3B2BA00762A72 /* UWMGrader-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UWMGrader-Info.plist"; sourceTree = "<group>"; };
+		52BBA64118E3B2BA00762A72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		52BBA64318E3B2BA00762A72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		52BBA64518E3B2BA00762A72 /* UWMGrader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UWMGrader-Prefix.pch"; sourceTree = "<group>"; };
+		52BBA64618E3B2BA00762A72 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		52BBA64718E3B2BA00762A72 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		52BBA64A18E3B2BA00762A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		52BBA64C18E3B2BA00762A72 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		52BBA64D18E3B2BA00762A72 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		52BBA64F18E3B2BA00762A72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		52BBA65518E3B2BA00762A72 /* UWMGraderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UWMGraderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52BBA65618E3B2BA00762A72 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		52BBA65E18E3B2BA00762A72 /* UWMGraderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UWMGraderTests-Info.plist"; sourceTree = "<group>"; };
+		52BBA66018E3B2BA00762A72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		52BBA66218E3B2BA00762A72 /* UWMGraderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UWMGraderTests.m; sourceTree = "<group>"; };
+		52C1038C1907396E00D0D46B /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		52C1038D1907396E00D0D46B /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52BBA63118E3B2BA00762A72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BBA63A18E3B2BA00762A72 /* CoreGraphics.framework in Frameworks */,
+				52BBA63C18E3B2BA00762A72 /* UIKit.framework in Frameworks */,
+				52BBA63818E3B2BA00762A72 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52BBA65218E3B2BA00762A72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BBA65718E3B2BA00762A72 /* XCTest.framework in Frameworks */,
+				52BBA65918E3B2BA00762A72 /* UIKit.framework in Frameworks */,
+				52BBA65818E3B2BA00762A72 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		523D0E3F18E3BAB7005C4BB6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				52BBA64C18E3B2BA00762A72 /* LogInViewController.h */,
+				52BBA64D18E3B2BA00762A72 /* LogInViewController.m */,
+				523D0E3018E3B913005C4BB6 /* ClassTableViewController.h */,
+				523D0E3118E3B913005C4BB6 /* ClassTableViewController.m */,
+				523D0E3318E3B930005C4BB6 /* GradeTableViewController.h */,
+				523D0E3418E3B930005C4BB6 /* GradeTableViewController.m */,
+				5284650518F39575005FB632 /* GradeItemViewController.h */,
+				5284650618F39575005FB632 /* GradeItemViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		523D0E4018E3BAC0005C4BB6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				52C1038C1907396E00D0D46B /* Parser.h */,
+				52C1038D1907396E00D0D46B /* Parser.m */,
+				52B381AF18E4751700B4612E /* User.h */,
+				52B381B018E4751700B4612E /* User.m */,
+				523D0E3918E3BA0E005C4BB6 /* Course.h */,
+				523D0E3A18E3BA0E005C4BB6 /* Course.m */,
+				52B381B518E47B7600B4612E /* GradeSection.h */,
+				52B381B618E47B7600B4612E /* GradeSection.m */,
+				523D0E3C18E3BA45005C4BB6 /* Grade.h */,
+				523D0E3D18E3BA45005C4BB6 /* Grade.m */,
+				52B381B218E4791100B4612E /* Score.h */,
+				52B381B318E4791100B4612E /* Score.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		527AB63F18E4D1E600F7FEE8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				527AB64018E4D1E600F7FEE8 /* UWMLogo.png */,
+			);
+			path = Images;
+			sourceTree = SOURCE_ROOT;
+		};
+		52BBA62B18E3B2BA00762A72 = {
+			isa = PBXGroup;
+			children = (
+				52BBA63D18E3B2BA00762A72 /* UWMGrader */,
+				52BBA65C18E3B2BA00762A72 /* UWMGraderTests */,
+				52BBA63618E3B2BA00762A72 /* Frameworks */,
+				52BBA63518E3B2BA00762A72 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		52BBA63518E3B2BA00762A72 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52BBA63418E3B2BA00762A72 /* UWMGrader.app */,
+				52BBA65518E3B2BA00762A72 /* UWMGraderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52BBA63618E3B2BA00762A72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52BBA63718E3B2BA00762A72 /* Foundation.framework */,
+				52BBA63918E3B2BA00762A72 /* CoreGraphics.framework */,
+				52BBA63B18E3B2BA00762A72 /* UIKit.framework */,
+				52BBA65618E3B2BA00762A72 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52BBA63D18E3B2BA00762A72 /* UWMGrader */ = {
+			isa = PBXGroup;
+			children = (
+				527AB63F18E4D1E600F7FEE8 /* Images */,
+				52BBA64618E3B2BA00762A72 /* AppDelegate.h */,
+				52BBA64718E3B2BA00762A72 /* AppDelegate.m */,
+				52BBA64918E3B2BA00762A72 /* Main.storyboard */,
+				523D0E3F18E3BAB7005C4BB6 /* Controller */,
+				52BBA64F18E3B2BA00762A72 /* Images.xcassets */,
+				52BBA63E18E3B2BA00762A72 /* Supporting Files */,
+				523D0E4018E3BAC0005C4BB6 /* Model */,
+			);
+			path = UWMGrader;
+			sourceTree = "<group>";
+		};
+		52BBA63E18E3B2BA00762A72 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				52BBA63F18E3B2BA00762A72 /* UWMGrader-Info.plist */,
+				52BBA64018E3B2BA00762A72 /* InfoPlist.strings */,
+				52BBA64318E3B2BA00762A72 /* main.m */,
+				52BBA64518E3B2BA00762A72 /* UWMGrader-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52BBA65C18E3B2BA00762A72 /* UWMGraderTests */ = {
+			isa = PBXGroup;
+			children = (
+				52BBA66218E3B2BA00762A72 /* UWMGraderTests.m */,
+				52BBA65D18E3B2BA00762A72 /* Supporting Files */,
+			);
+			path = UWMGraderTests;
+			sourceTree = "<group>";
+		};
+		52BBA65D18E3B2BA00762A72 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				52BBA65E18E3B2BA00762A72 /* UWMGraderTests-Info.plist */,
+				52BBA65F18E3B2BA00762A72 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		52BBA63318E3B2BA00762A72 /* UWMGrader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52BBA66618E3B2BA00762A72 /* Build configuration list for PBXNativeTarget "UWMGrader" */;
+			buildPhases = (
+				52BBA63018E3B2BA00762A72 /* Sources */,
+				52BBA63118E3B2BA00762A72 /* Frameworks */,
+				52BBA63218E3B2BA00762A72 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UWMGrader;
+			productName = UWMGrader;
+			productReference = 52BBA63418E3B2BA00762A72 /* UWMGrader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		52BBA65418E3B2BA00762A72 /* UWMGraderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52BBA66918E3B2BA00762A72 /* Build configuration list for PBXNativeTarget "UWMGraderTests" */;
+			buildPhases = (
+				52BBA65118E3B2BA00762A72 /* Sources */,
+				52BBA65218E3B2BA00762A72 /* Frameworks */,
+				52BBA65318E3B2BA00762A72 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52BBA65B18E3B2BA00762A72 /* PBXTargetDependency */,
+			);
+			name = UWMGraderTests;
+			productName = UWMGraderTests;
+			productReference = 52BBA65518E3B2BA00762A72 /* UWMGraderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52BBA62C18E3B2BA00762A72 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "John Pease";
+				TargetAttributes = {
+					52BBA65418E3B2BA00762A72 = {
+						TestTargetID = 52BBA63318E3B2BA00762A72;
+					};
+				};
+			};
+			buildConfigurationList = 52BBA62F18E3B2BA00762A72 /* Build configuration list for PBXProject "UWMGrader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52BBA62B18E3B2BA00762A72;
+			productRefGroup = 52BBA63518E3B2BA00762A72 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52BBA63318E3B2BA00762A72 /* UWMGrader */,
+				52BBA65418E3B2BA00762A72 /* UWMGraderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52BBA63218E3B2BA00762A72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				527AB64118E4D1E600F7FEE8 /* UWMLogo.png in Resources */,
+				52BBA65018E3B2BA00762A72 /* Images.xcassets in Resources */,
+				52BBA64218E3B2BA00762A72 /* InfoPlist.strings in Resources */,
+				52BBA64B18E3B2BA00762A72 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52BBA65318E3B2BA00762A72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BBA66118E3B2BA00762A72 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52BBA63018E3B2BA00762A72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B381B118E4751700B4612E /* User.m in Sources */,
+				523D0E3B18E3BA0E005C4BB6 /* Course.m in Sources */,
+				523D0E3518E3B930005C4BB6 /* GradeTableViewController.m in Sources */,
+				5284650718F39575005FB632 /* GradeItemViewController.m in Sources */,
+				52C1038E1907396E00D0D46B /* Parser.m in Sources */,
+				52B381B418E4791100B4612E /* Score.m in Sources */,
+				52BBA64E18E3B2BA00762A72 /* LogInViewController.m in Sources */,
+				523D0E3E18E3BA45005C4BB6 /* Grade.m in Sources */,
+				52BBA64818E3B2BA00762A72 /* AppDelegate.m in Sources */,
+				523D0E3218E3B913005C4BB6 /* ClassTableViewController.m in Sources */,
+				52BBA64418E3B2BA00762A72 /* main.m in Sources */,
+				52B381B718E47B7600B4612E /* GradeSection.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52BBA65118E3B2BA00762A72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52BBA66318E3B2BA00762A72 /* UWMGraderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52BBA65B18E3B2BA00762A72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52BBA63318E3B2BA00762A72 /* UWMGrader */;
+			targetProxy = 52BBA65A18E3B2BA00762A72 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		52BBA64018E3B2BA00762A72 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52BBA64118E3B2BA00762A72 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		52BBA64918E3B2BA00762A72 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52BBA64A18E3B2BA00762A72 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		52BBA65F18E3B2BA00762A72 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52BBA66018E3B2BA00762A72 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		52BBA66418E3B2BA00762A72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		52BBA66518E3B2BA00762A72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		52BBA66718E3B2BA00762A72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UWMGrader/UWMGrader-Prefix.pch";
+				INFOPLIST_FILE = "UWMGrader/UWMGrader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		52BBA66818E3B2BA00762A72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UWMGrader/UWMGrader-Prefix.pch";
+				INFOPLIST_FILE = "UWMGrader/UWMGrader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		52BBA66A18E3B2BA00762A72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UWMGrader.app/UWMGrader";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UWMGrader/UWMGrader-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "UWMGraderTests/UWMGraderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		52BBA66B18E3B2BA00762A72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UWMGrader.app/UWMGrader";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UWMGrader/UWMGrader-Prefix.pch";
+				INFOPLIST_FILE = "UWMGraderTests/UWMGraderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52BBA62F18E3B2BA00762A72 /* Build configuration list for PBXProject "UWMGrader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52BBA66418E3B2BA00762A72 /* Debug */,
+				52BBA66518E3B2BA00762A72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52BBA66618E3B2BA00762A72 /* Build configuration list for PBXNativeTarget "UWMGrader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52BBA66718E3B2BA00762A72 /* Debug */,
+				52BBA66818E3B2BA00762A72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52BBA66918E3B2BA00762A72 /* Build configuration list for PBXNativeTarget "UWMGraderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52BBA66A18E3B2BA00762A72 /* Debug */,
+				52BBA66B18E3B2BA00762A72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52BBA62C18E3B2BA00762A72 /* Project object */;
+}

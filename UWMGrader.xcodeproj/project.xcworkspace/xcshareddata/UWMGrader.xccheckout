@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>11D58E54-6AD2-4A07-93A2-A5F30295B485</string>
+	<key>IDESourceControlProjectName</key>
+	<string>UWMGrader</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9F3CAD0A-B864-4C51-B7B5-ADFBA229B4CA</key>
+		<string>http://github.com/JohnPease/UWMGrader.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>UWMGrader.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9F3CAD0A-B864-4C51-B7B5-ADFBA229B4CA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://github.com/JohnPease/UWMGrader.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9F3CAD0A-B864-4C51-B7B5-ADFBA229B4CA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9F3CAD0A-B864-4C51-B7B5-ADFBA229B4CA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>UWMGrader</string>
+		</dict>
+	</array>
+</dict>
+</plist>
