@@ -12,6 +12,7 @@
 
 @interface LogInViewController ()
 @property(nonatomic)int webViewLoads_;
+@property(nonatomic)BOOL initialLoad;
 @end
 
 @implementation LogInViewController
@@ -30,7 +31,10 @@
 	
 	/* REMOVE THIS BEFORE SUBMITTING */
 	self.userNameTextField.text = @"jjpease";
-	self.passwordTextField.text = @"test";
+	self.passwordTextField.text = @"";
+    self.initialLoad = YES;
+    self.loginButton.enabled = NO;
+    self.loginButton.tintColor = [UIColor grayColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,6 +44,7 @@
 }
 
 - (IBAction)logInButtonPressed {
+    NSLog(@"button pressed");
 	NSString* login = @"document.forms.item(0).submit();";
 	NSString* usernameSet = [NSString stringWithFormat:@"document.getElementById('j_username').value = \"%@\"", self.userNameTextField.text];
 	NSString* passwordSet = [NSString stringWithFormat:@"document.getElementById('j_password').value = \"%@\"", self.passwordTextField.text];
@@ -71,6 +76,13 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	self.webViewLoads_--;
 	NSString* html = [NSString stringWithContentsOfURL:webView.request.URL encoding:NSASCIIStringEncoding error:nil];
+    
+    if (self.initialLoad == YES && [webView.request.URL.absoluteString isEqualToString:@"https://idp.uwm.edu/idp/Authn/UserPassword"]) {
+        self.loginButton.enabled = YES;
+        self.loginButton.tintColor = [UIColor blackColor];
+        self.initialLoad = NO;
+    }
+    
 	if ([webView.request.URL.absoluteString isEqualToString:@"https://uwm.courses.wisconsin.edu/d2l/m/home"]) {
 		[self performSegueWithIdentifier:@"LoginSegue" sender:self];
 	} else if ([html rangeOfString:@"Bad username or password"].location != NSNotFound) {

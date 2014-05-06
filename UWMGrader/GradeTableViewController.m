@@ -79,7 +79,8 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.gradeSections.count;
+    GradeSection* gradeSection = [self.gradeSections objectAtIndex:section];
+    return gradeSection.grades.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,7 +92,11 @@
 	/*
 	 notes: get section, get correct grade from that section
 	 */
-	
+    GradeSection* gradeSection = [self.gradeSections objectAtIndex:indexPath.section];
+    Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:12.0]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", grade.name, grade.score];
+    
 	return cell;
 }
 

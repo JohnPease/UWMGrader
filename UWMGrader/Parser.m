@@ -99,38 +99,41 @@
 		
 		GradeSection* gradeSection = [[GradeSection alloc] initWithName:gradeSectionName];
 		
-		NSRange gradeStart = [HTML rangeOfString:@"<th scope=\"row\" class=\"d_gt d_ich\"" options:NSLiteralSearch range:NSMakeRange(gradeSectionStart.location, HTML.length - gradeSectionStart.location)];
+        NSLog(@"gradeSectionStart.location: %i, HTML.length-gradeSectionStart.location: %i", gradeSectionStart.location, HTML.length-gradeSectionStart.location);
+        
+		NSRange gradeStart = [HTML rangeOfString:@"<th scope=\"row\"" options:NSLiteralSearch range:NSMakeRange(gradeSectionNameEnd.location, HTML.length - gradeSectionNameEnd.location)];
 		while (gradeStart.location != NSNotFound) {
 			NSRange gradeEnd		= [HTML rangeOfString:@"</tr>" options:NSLiteralSearch range:NSMakeRange(gradeStart.location, HTML.length - gradeStart.location)];
 			
 			/* get grade name */
 			NSRange gradeNameStart	= [HTML rangeOfString:@"<strong>" options:NSLiteralSearch range:NSMakeRange(gradeStart.location, HTML.length - gradeStart.location)];
-			NSRange gradeNameEnd	= [HTML rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(gradeNameStart.location, HTML.length - gradeNameStart.location)];
-			NSRange gradeNameRange	= NSMakeRange(gradeStart.location+8, gradeNameEnd.location-gradeStart.location-8);
+			NSRange gradeNameEnd	= [HTML rangeOfString:@"</strong>" options:NSLiteralSearch range:NSMakeRange(gradeNameStart.location, HTML.length - gradeNameStart.location)];
+			NSRange gradeNameRange	= NSMakeRange(gradeNameStart.location+8, gradeNameEnd.location-gradeNameStart.location-8);
 			NSString* gradeName		= [HTML substringWithRange:gradeNameRange];
+            NSLog(@"%@", gradeName);
 			
 			/* get grade value */
 			NSRange gradeValueStart = [HTML rangeOfString:@"<label id=\"z_" options:NSLiteralSearch range:NSMakeRange(gradeStart.location, HTML.length - gradeStart.location)];
 			NSString* gradeValue = @"----";
-			if (gradeValueStart.location != NSNotFound) {
-				gradeValueStart			= [HTML rangeOfString:@">" options:NSLiteralSearch range:NSMakeRange(gradeValueStart.location, HTML.length - gradeStart.location)];
-				NSRange gradeValueEnd	= [HTML rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(gradeValueStart.location, HTML.length - gradeValueStart.location)];
-				NSRange gradeValueRange = NSMakeRange(gradeValueStart.location+1, gradeValueEnd.location-gradeValueStart.location-1);
-				gradeValue				= [HTML substringWithRange:gradeValueRange];
-			}
+//			if (gradeValueStart.location != NSNotFound) {
+//				gradeValueStart			= [HTML rangeOfString:@">" options:NSLiteralSearch range:NSMakeRange(gradeValueStart.location, HTML.length - gradeStart.location)];
+//				NSRange gradeValueEnd	= [HTML rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(gradeValueStart.location, HTML.length - gradeValueStart.location)];
+//				NSRange gradeValueRange = NSMakeRange(gradeValueStart.location+1, gradeValueEnd.location-gradeValueStart.location-1);
+//				gradeValue				= [HTML substringWithRange:gradeValueRange];
+//			}
 			
 			/* get feedback ? */
 			
 			/* get weight ? */
 			
-			NSLog(@"grade section: %@, grade name: %@, grade value: %@", gradeSectionName, gradeName, gradeValue);
+			NSLog(@"\tgrade name: %@, grade value: %@", gradeName, gradeValue);
 			
 			/* create grade object and add it to gradesection */
 			Grade* grade = [[Grade alloc] initWithName:gradeName];
 			grade.score = gradeValue;
 			[gradeSection.grades addObject:grade];
 			
-			gradeStart = [HTML rangeOfString:@"" options:NSLiteralSearch range:NSMakeRange(gradeEnd.location, HTML.length-gradeEnd.location)];
+			gradeStart = [HTML rangeOfString:@"<th scope=\"row\"" options:NSLiteralSearch range:NSMakeRange(gradeEnd.location, HTML.length-gradeEnd.location)];
 		}
 		
 		[gradeSections addObject:gradeSection];
