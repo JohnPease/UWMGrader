@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #define D2LLoginUrl @"https://uwm.courses.wisconsin.edu/Shibboleth.sso/Login?target=https://uwm.courses.wisconsin.edu/d2l/shibbolethSSO/deepLinkLogin.d2l"
 
@@ -17,7 +18,7 @@
 @property(nonatomic, weak)IBOutlet UIImageView* d2lImageView;
 @property(nonatomic, weak)IBOutlet UIWebView* d2lWebView;
 @property(nonatomic, weak)IBOutlet UIButton* loginButton;
-@property(nonatomic, weak)IBOutlet UIActivityIndicatorView* activityIndicator;
+@property(nonatomic)MBProgressHUD* activityHud;
 
 - (IBAction)logInButtonPressed;
 - (IBAction)screenTapped;

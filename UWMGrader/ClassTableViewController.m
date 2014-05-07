@@ -105,6 +105,7 @@
 	if ([segue.identifier isEqualToString:@"logoutSegue"]) {
 		[self.navigationController popViewControllerAnimated:YES];
 	} else if ([segue.identifier isEqualToString:@"GradesSegue"]) {
+		[self startActivityHud];
 		NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
 		Course* course = [self.courses objectAtIndex:indexPath.row];
 		GradeTableViewController* dest = segue.destinationViewController;
@@ -112,6 +113,7 @@
 		dest.navigationItem.title = course.name;
 		dest.course = course;
 		dest.gradeSections = [self.parser getGradeSectionsFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
+		[self.activityHud hide:YES];
 	}
 }
 
@@ -133,6 +135,12 @@
 	NSURL* gradesUrl = [NSURL URLWithString:grades];
 	NSURLRequest* request = [NSURLRequest requestWithURL:gradesUrl];
 	[self.d2lWebView loadRequest:request];
+}
+
+- (void)startActivityHud {
+	self.activityHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	self.activityHud = MBProgressHUDModeIndeterminate;
+	self.activityHud.labelText = @"loading";
 }
 
 

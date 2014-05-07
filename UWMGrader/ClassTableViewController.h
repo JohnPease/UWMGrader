@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHud/MBProgressHUD.h>
+
 @class User;
 @class Course;
 
@@ -15,6 +17,7 @@
 @property(nonatomic,strong)User* user;
 @property(nonatomic,strong)NSArray* courses;
 @property(nonatomic,strong)UIWebView* d2lWebView;
+@property(nonatomic)MBProgressHUD* activityHud;
 
 - (IBAction)logoutButtonPressed;
 

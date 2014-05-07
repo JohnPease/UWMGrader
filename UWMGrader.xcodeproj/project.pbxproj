@@ -31,6 +31,7 @@
 		52BBA66118E3B2BA00762A72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52BBA65F18E3B2BA00762A72 /* InfoPlist.strings */; };
 		52BBA66318E3B2BA00762A72 /* UWMGraderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BBA66218E3B2BA00762A72 /* UWMGraderTests.m */; };
 		52C1038E1907396E00D0D46B /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1038D1907396E00D0D46B /* Parser.m */; };
+		52D2DA541919E30100918557 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D2DA531919E2F900918557 /* libMBProgressHUD.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 52BBA63318E3B2BA00762A72;
 			remoteInfo = UWMGrader;
+		};
+		52D2DA521919E2F900918557 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D2DA4E1919E2F800918557 /* MBProgressHUD.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D286A7491518C70F00E13FB8;
+			remoteInfo = MBProgressHUD;
+		};
+		52D2DA551919E30900918557 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D2DA4E1919E2F800918557 /* MBProgressHUD.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D286A7481518C70F00E13FB8;
+			remoteInfo = MBProgressHUD;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -82,6 +97,7 @@
 		52BBA66218E3B2BA00762A72 /* UWMGraderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UWMGraderTests.m; sourceTree = "<group>"; };
 		52C1038C1907396E00D0D46B /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		52C1038D1907396E00D0D46B /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		52D2DA4E1919E2F800918557 /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = "Frameworks/MBProgressHUD-master/MBProgressHUD.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D2DA541919E30100918557 /* libMBProgressHUD.a in Frameworks */,
 				52BBA63A18E3B2BA00762A72 /* CoreGraphics.framework in Frameworks */,
 				52BBA63C18E3B2BA00762A72 /* UIKit.framework in Frameworks */,
 				52BBA63818E3B2BA00762A72 /* Foundation.framework in Frameworks */,
@@ -111,6 +128,8 @@
 		523D0E3F18E3BAB7005C4BB6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				52BBA64618E3B2BA00762A72 /* AppDelegate.h */,
+				52BBA64718E3B2BA00762A72 /* AppDelegate.m */,
 				52BBA64C18E3B2BA00762A72 /* LogInViewController.h */,
 				52BBA64D18E3B2BA00762A72 /* LogInViewController.m */,
 				523D0E3018E3B913005C4BB6 /* ClassTableViewController.h */,
@@ -150,6 +169,14 @@
 			path = Images;
 			sourceTree = SOURCE_ROOT;
 		};
+		52B4A0371919D2C60016E991 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52BBA64918E3B2BA00762A72 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		52BBA62B18E3B2BA00762A72 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +199,7 @@
 		52BBA63618E3B2BA00762A72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52D2DA4E1919E2F800918557 /* MBProgressHUD.xcodeproj */,
 				52BBA63718E3B2BA00762A72 /* Foundation.framework */,
 				52BBA63918E3B2BA00762A72 /* CoreGraphics.framework */,
 				52BBA63B18E3B2BA00762A72 /* UIKit.framework */,
@@ -184,9 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				527AB63F18E4D1E600F7FEE8 /* Images */,
-				52BBA64618E3B2BA00762A72 /* AppDelegate.h */,
-				52BBA64718E3B2BA00762A72 /* AppDelegate.m */,
-				52BBA64918E3B2BA00762A72 /* Main.storyboard */,
+				52B4A0371919D2C60016E991 /* View */,
 				523D0E3F18E3BAB7005C4BB6 /* Controller */,
 				52BBA64F18E3B2BA00762A72 /* Images.xcassets */,
 				52BBA63E18E3B2BA00762A72 /* Supporting Files */,
@@ -224,6 +250,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		52D2DA4F1919E2F800918557 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52D2DA531919E2F900918557 /* libMBProgressHUD.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -238,6 +272,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				52D2DA561919E30900918557 /* PBXTargetDependency */,
 			);
 			name = UWMGrader;
 			productName = UWMGrader;
@@ -287,6 +322,12 @@
 			mainGroup = 52BBA62B18E3B2BA00762A72;
 			productRefGroup = 52BBA63518E3B2BA00762A72 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 52D2DA4F1919E2F800918557 /* Products */;
+					ProjectRef = 52D2DA4E1919E2F800918557 /* MBProgressHUD.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				52BBA63318E3B2BA00762A72 /* UWMGrader */,
@@ -294,6 +335,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		52D2DA531919E2F900918557 /* libMBProgressHUD.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMBProgressHUD.a;
+			remoteRef = 52D2DA521919E2F900918557 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		52BBA63218E3B2BA00762A72 /* Resources */ = {
@@ -352,6 +403,11 @@
 			isa = PBXTargetDependency;
 			target = 52BBA63318E3B2BA00762A72 /* UWMGrader */;
 			targetProxy = 52BBA65A18E3B2BA00762A72 /* PBXContainerItemProxy */;
+		};
+		52D2DA561919E30900918557 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MBProgressHUD;
+			targetProxy = 52D2DA551919E30900918557 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

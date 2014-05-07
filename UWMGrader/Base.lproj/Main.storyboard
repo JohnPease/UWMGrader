@@ -58,10 +58,6 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="SVB-sx-W6O"/>
                                 </connections>
                             </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IIL-Pi-gN0">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -70,7 +66,6 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="IIL-Pi-gN0" id="dEd-ds-pb1"/>
                         <outlet property="d2lImageView" destination="w60-WE-lt6" id="qcD-KU-K2P"/>
                         <outlet property="d2lWebView" destination="GxJ-af-eox" id="DuU-Et-b0Q"/>
                         <outlet property="loginButton" destination="CFq-Cp-EjO" id="UHL-NA-pCY"/>
