@@ -36,6 +36,16 @@
 	self.webViewLoads = 0;
 }
 
+/* mainly here for when user is logged out and controller needs to reload initial login page */
+- (void)viewWillAppear {
+	NSURLRequest* d2lLoginRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:D2LLoginUrl]];
+	[self.d2lWebView loadRequest:d2lLoginRequest];
+	self.initialLoad = YES;
+	self.loginButton.enabled = NO;
+	self.loginButton.tintColor = [UIColor grayColor];
+	self.webViewLoads = 0;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
