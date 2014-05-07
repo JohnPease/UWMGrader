@@ -17,7 +17,9 @@
 @property(nonatomic, weak)IBOutlet UIImageView* d2lImageView;
 @property(nonatomic, weak)IBOutlet UIWebView* d2lWebView;
 @property(nonatomic, weak)IBOutlet UIButton* loginButton;
+@property(nonatomic, weak)IBOutlet UIActivityIndicatorView* activityIndicator;
 
 - (IBAction)logInButtonPressed;
+- (IBAction)screenTapped;
 
 @end
