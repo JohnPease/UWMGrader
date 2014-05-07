@@ -85,6 +85,8 @@
 			gradeSectionStart = [HTML rangeOfString:@"<th scope=\"row\"  colspan=\"2\" class=\"d_gt d_ich\" style=\"border-left:none;\"><div class=\"dco\"><div class=\"dco_c\"><div class=\"dco\"><div class=\"dco_c\">" options:NSLiteralSearch range:NSMakeRange(gradeSectionStart.location+1, HTML.length - gradeSectionStart.location-1)];
 		}
 		
+		NSRange gradeSectionEnd = [HTML rangeOfString:@"<th scope=\"row\"  colspan=\"2\" class=\"d_gt d_ich\" style=\"border-left:none;\"><div class=\"dco\"><div class=\"dco_c\"><div class=\"dco\"><div class=\"dco_c\">" options:NSLiteralSearch range:NSMakeRange(gradeSectionStart.location+1, HTML.length - gradeSectionStart.location-1)];
+		
 		/* get grade section name */
 		NSRange gradeSectionNameStart	= [HTML rangeOfString:@"<strong>" options:NSLiteralSearch range:NSMakeRange(gradeSectionStart.location, HTML.length - gradeSectionStart.location)];
 		NSRange gradeSectionNameEnd		= [HTML rangeOfString:@"</strong>" options:NSLiteralSearch range:NSMakeRange(gradeSectionNameStart.location, HTML.length - gradeSectionNameStart.location)];
@@ -99,10 +101,10 @@
 		
 		GradeSection* gradeSection = [[GradeSection alloc] initWithName:gradeSectionName];
 		
-        NSLog(@"gradeSectionStart.location: %i, HTML.length-gradeSectionStart.location: %i", gradeSectionStart.location, HTML.length-gradeSectionStart.location);
+//        NSLog(@"gradeSectionStart.location: %i, HTML.length-gradeSectionStart.location: %i", gradeSectionStart.location, HTML.length-gradeSectionStart.location);
         
 		NSRange gradeStart = [HTML rangeOfString:@"<th scope=\"row\"" options:NSLiteralSearch range:NSMakeRange(gradeSectionNameEnd.location, HTML.length - gradeSectionNameEnd.location)];
-		while (gradeStart.location != NSNotFound) {
+		while (gradeStart.location != NSNotFound && gradeStart.location < gradeSectionEnd.location) {
 			NSRange gradeEnd		= [HTML rangeOfString:@"</tr>" options:NSLiteralSearch range:NSMakeRange(gradeStart.location, HTML.length - gradeStart.location)];
 			
 			/* get grade name */
@@ -110,17 +112,17 @@
 			NSRange gradeNameEnd	= [HTML rangeOfString:@"</strong>" options:NSLiteralSearch range:NSMakeRange(gradeNameStart.location, HTML.length - gradeNameStart.location)];
 			NSRange gradeNameRange	= NSMakeRange(gradeNameStart.location+8, gradeNameEnd.location-gradeNameStart.location-8);
 			NSString* gradeName		= [HTML substringWithRange:gradeNameRange];
-            NSLog(@"%@", gradeName);
+//            NSLog(@"%@", gradeName);
 			
 			/* get grade value */
 			NSRange gradeValueStart = [HTML rangeOfString:@"<label id=\"z_" options:NSLiteralSearch range:NSMakeRange(gradeStart.location, HTML.length - gradeStart.location)];
-			NSString* gradeValue = @"----";
-//			if (gradeValueStart.location != NSNotFound) {
-//				gradeValueStart			= [HTML rangeOfString:@">" options:NSLiteralSearch range:NSMakeRange(gradeValueStart.location, HTML.length - gradeStart.location)];
-//				NSRange gradeValueEnd	= [HTML rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(gradeValueStart.location, HTML.length - gradeValueStart.location)];
-//				NSRange gradeValueRange = NSMakeRange(gradeValueStart.location+1, gradeValueEnd.location-gradeValueStart.location-1);
-//				gradeValue				= [HTML substringWithRange:gradeValueRange];
-//			}
+			NSString* gradeValue = @"- / -";
+			if (gradeValueStart.location != NSNotFound) {
+				gradeValueStart			= [HTML rangeOfString:@">" options:NSLiteralSearch range:NSMakeRange(gradeValueStart.location, HTML.length - gradeValueStart.location)];
+				NSRange gradeValueEnd	= [HTML rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(gradeValueStart.location, HTML.length - gradeValueStart.location)];
+				NSRange gradeValueRange = NSMakeRange(gradeValueStart.location+1, gradeValueEnd.location-gradeValueStart.location-1);
+				gradeValue				= [HTML substringWithRange:gradeValueRange];
+			}
 			
 			/* get feedback ? */
 			
