@@ -62,6 +62,10 @@
     for (cookie in [jar cookies]) {
         [jar deleteCookie:cookie];
     }
+    /* log out of d2l using javascript function from mobile site (Note: this only works on mobile site) */
+    NSString* logoutJs = @"D2L.O(\"__g1\",15)();";
+    [self.d2lWebView stringByEvaluatingJavaScriptFromString:logoutJs];
+    
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self.navigationController popViewControllerAnimated:YES];
 	[self performSegueWithIdentifier:@"logoutSegue" sender:self];
