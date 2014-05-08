@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Log In View Controller-->
@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter username here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="twB-Nc-AjA">
-                                <rect key="frame" x="20" y="249" width="280" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter username here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="twB-Nc-AjA">
+                                <rect key="frame" x="60" y="249" width="201" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
@@ -25,8 +25,8 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="21k-0U-rYN"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter password here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fTD-Py-3mT">
-                                <rect key="frame" x="20" y="287" width="280" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fTD-Py-3mT">
+                                <rect key="frame" x="60" y="287" width="201" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
@@ -119,13 +119,13 @@
                     <navigationItem key="navigationItem" title="UWM Classes" id="hpj-P6-MBq">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="M5c-aG-UcR">
                             <connections>
-                                <action selector="logoutButtonPressed" destination="meN-Uy-8ig" id="bHC-iD-uzl"/>
-                                <segue destination="vXZ-lx-hvc" kind="modal" identifier="LogoutSegue" id="mqR-aA-7Cw"/>
+                                <action selector="logoutButtonPressed" destination="meN-Uy-8ig" id="3SV-3X-pbd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="X9H-hH-WBT" kind="push" identifier="GradesSegue" id="vZN-2c-PwC"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="logoutSegue" modalTransitionStyle="coverVertical" id="A7I-MU-4K9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJa-wB-NLe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,9 +148,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ofa-ap-2d1" kind="push" id="l5I-Le-8YU"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -159,12 +156,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="l5f-nR-yIj"/>
+                    <connections>
+                        <segue destination="ofa-ap-2d1" kind="push" identifier="GradeDetailSegue" id="Gas-Ud-aCd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEj-L7-ZEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1232" y="131"/>
         </scene>
-        <!--Grade Item View Controller - <Grade Name>-->
+        <!--Grade Item View Controller-->
         <scene sceneID="fqL-ke-flU">
             <objects>
                 <viewController id="ofa-ap-2d1" customClass="GradeItemViewController" sceneMemberID="viewController">
@@ -209,7 +209,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="&lt;Grade Name>" id="i5M-mO-4tN"/>
+                    <navigationItem key="navigationItem" id="i5M-mO-4tN"/>
                     <connections>
                         <outlet property="feedbackFromGrader" destination="yuj-Ru-cPX" id="4kV-v6-wkw"/>
                         <outlet property="gradeStatisticsWebView" destination="YCQ-Ar-KOS" id="zse-19-O05"/>

@@ -43,6 +43,7 @@
 }
 
 - (IBAction)logInButtonPressed {
+//    NSLog(@"loaded: %@", self.d2lWebView.request.URL.absoluteString);
 	NSString* login = @"document.forms.item(0).submit();";
 	NSString* usernameSet = [NSString stringWithFormat:@"document.getElementById('j_username').value = \"%@\"", self.userNameTextField.text];
 	NSString* passwordSet = [NSString stringWithFormat:@"document.getElementById('j_password').value = \"%@\"", self.passwordTextField.text];

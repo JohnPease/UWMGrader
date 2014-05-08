@@ -7,6 +7,7 @@
 //
 
 #import "GradeTableViewController.h"
+#import "GradeItemViewController.h"
 #import "GradeSection.h"
 #import "Grade.h"
 #import "Course.h"
@@ -85,7 +86,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GradeCell" forIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GradeCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"GradeCell"];
     
     // Configure the cell...
 	/* NEED TO FIGURE THIS OUT */
@@ -95,9 +97,15 @@
     GradeSection* gradeSection = [self.gradeSections objectAtIndex:indexPath.section];
     Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
     [cell.textLabel setFont:[UIFont systemFontOfSize:12.0]];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", grade.name, grade.score];
-    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", grade.name];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", grade.score];
+    cell.detailTextLabel.textColor = [UIColor grayColor];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"GradeDetailSegue" sender:self];
 }
 
 #pragma mark - Navigation
@@ -107,6 +115,11 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    GradeItemViewController *dest = segue.destinationViewController;
+    NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
+    GradeSection* gradeSection = [self.gradeSections objectAtIndex:indexPath.section];
+    Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
+    dest.navigationItem.title = grade.name;
 }
 
 @end

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 John Pease. All rights reserved.
 //
 
+#import "LogInViewController.h"
 #import "ClassTableViewController.h"
 #import "GradeTableViewController.h"
 #import "Parser.h"
@@ -56,19 +57,12 @@
 }
 
 - (IBAction)logoutButtonPressed {
-    /* log out of d2l as well */
-    NSHTTPCookie* cookie;
-    NSHTTPCookieStorage* jar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [jar cookies]) {
-        [jar deleteCookie:cookie];
-    }
     /* log out of d2l using javascript function from mobile site (Note: this only works on mobile site) */
     NSString* logoutJs = @"D2L.O(\"__g1\",15)();";
     [self.d2lWebView stringByEvaluatingJavaScriptFromString:logoutJs];
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.navigationController popViewControllerAnimated:YES];
-	[self performSegueWithIdentifier:@"logoutSegue" sender:self];
+    /* load d2l login site */
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:D2LLoginUrl]];
+    [self.d2lWebView loadRequest:request];
 }
 
 #pragma mark - Table view data source
@@ -95,9 +89,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self startActivityHud];
 	Course* course = [self.courses objectAtIndex:indexPath.row];
-	[self.d2lWebView stringByEvaluatingJavaScriptFromString:course.url];
+    if (course.gradeSections.count == 0) {
+        [self startActivityHud];
+        [self.d2lWebView stringByEvaluatingJavaScriptFromString:course.url];
+    } else {
+        [self performSegueWithIdentifier:@"GradesSegue" sender:self];
+    }
 }
 
 #pragma mark - Navigation
@@ -110,14 +108,20 @@
 	if ([segue.identifier isEqualToString:@"logoutSegue"]) {
 		[self.navigationController popViewControllerAnimated:YES];
 	} else if ([segue.identifier isEqualToString:@"GradesSegue"]) {
-		[self startActivityHud];
 		NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
 		Course* course = [self.courses objectAtIndex:indexPath.row];
+        
+        if (course.gradeSections.count == 0) {
+            [self startActivityHud];
+            course.gradeSections = [self.parser getGradeSectionsFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
+        }
+        
 		GradeTableViewController* dest = segue.destinationViewController;
 		dest.d2lWebView = self.d2lWebView;
 		dest.navigationItem.title = course.name;
 		dest.course = course;
-		dest.gradeSections = [self.parser getGradeSectionsFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
+        dest.gradeSections = course.gradeSections;
+//		dest.gradeSections = [self.parser getGradeSectionsFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
 		[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 		[self.tableView cellForRowAtIndexPath:indexPath].selected = NO;
 	}
@@ -127,14 +131,17 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	Course* course = [self.courses objectAtIndex:[self.tableView indexPathForSelectedRow].row];
 	NSString* title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-//	NSLog(@"finished loading title: %@", title);
+//	NSLog(@"finished loading url: %@", webView.request.URL.absoluteString);
 	if ([title isEqualToString:[NSString stringWithFormat:@"Home - %@", course.name]]) {
 		[self loadGradesPage];
 	} else if ([title isEqualToString:[NSString stringWithFormat:@"Grades - %@ - Milwaukee", course.name]]) {
 		/* only perform segue once grades page has been loaded */
-		NSLog(@"finished loading grades page");
+//		NSLog(@"finished loading grades page");
 		[self performSegueWithIdentifier:@"GradesSegue" sender:self];
-	}
+	} else if ([webView.request.URL.absoluteString isEqualToString:@"https://idp.uwm.edu/idp/logout.jsp"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+        [self performSegueWithIdentifier:@"logoutSegue" sender:self];
+    }
 }
 
 - (void)loadGradesPage {

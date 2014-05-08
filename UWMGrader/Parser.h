@@ -12,7 +12,7 @@
 
 - (id)init;
 
-- (NSArray*)getCoursesFrom:(NSString*)HTML;
-- (NSArray*)getGradeSectionsFrom:(NSString*)HTML;
+- (NSMutableArray*)getCoursesFrom:(NSString*)HTML;
+- (NSMutableArray*)getGradeSectionsFrom:(NSString*)HTML;
 
 @end
