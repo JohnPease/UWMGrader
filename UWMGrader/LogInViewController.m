@@ -36,16 +36,6 @@
 	self.webViewLoads = 0;
 }
 
-/* mainly here for when user is logged out and controller needs to reload initial login page */
-- (void)viewWillAppear {
-	NSURLRequest* d2lLoginRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:D2LLoginUrl]];
-	[self.d2lWebView loadRequest:d2lLoginRequest];
-	self.initialLoad = YES;
-	self.loginButton.enabled = NO;
-	self.loginButton.tintColor = [UIColor grayColor];
-	self.webViewLoads = 0;
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -94,7 +84,7 @@
 	if (self.webViewLoads == 0) {
 		if ([self.url isEqualToString:webView.request.URL.absoluteString]) {
 			UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"you done messed up bro" message:@"please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-			[self.activityHud hide:YES];
+			[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 			[error show];
 		}
 	}
@@ -117,7 +107,7 @@
     ClassTableViewController* destination = [dest.childViewControllers objectAtIndex:0];
 	Parser* p = [[Parser alloc] init];
 	destination.courses = [p getCoursesFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
-	[self.activityHud hide:YES];
+	[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 	destination.d2lWebView = self.d2lWebView;
 }
 

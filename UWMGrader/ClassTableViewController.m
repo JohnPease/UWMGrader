@@ -95,6 +95,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self startActivityHud];
 	Course* course = [self.courses objectAtIndex:indexPath.row];
 	[self.d2lWebView stringByEvaluatingJavaScriptFromString:course.url];
 }
@@ -117,7 +118,7 @@
 		dest.navigationItem.title = course.name;
 		dest.course = course;
 		dest.gradeSections = [self.parser getGradeSectionsFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
-		[self.activityHud hide:YES];
+		[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 	}
 }
 

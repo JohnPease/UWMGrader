@@ -151,7 +151,7 @@
 	GradeSection* gradeSection = [[GradeSection alloc] initWithName:@"Grades"];
 	
 	NSRange gradeStart = [HTML rangeOfString:@"<th scope=\"row\"  class=\"d_gt d_ich\"><div class=\"dco\"><div class=\"dco_c\"><div class=\"dco\"><div class=\"dco_c\"><strong>"];
-	NSLog(@"start.location = %i, start.length = %i, html.length = %i", gradeStart.location, gradeStart.length, HTML.length);
+	
 	while (gradeStart.location != NSNotFound) {
 		NSRange gradeEnd = [HTML rangeOfString:@"</div></div></div></div>" options:NSLiteralSearch range:NSMakeRange(gradeStart.location, HTML.length - gradeStart.location)];
 		
@@ -169,8 +169,6 @@
 			NSRange gradeValueRange = NSMakeRange(gradeValueStart.location+1, gradeValueEnd.location-gradeValueStart.location-1);
 			gradeValue = [HTML substringWithRange:gradeValueRange];
 		}
-		
-		NSLog(@"grade name: %@, grade value: %@", gradeName, gradeValue);
 		
 		/* create grade object */
 		Grade* grade = [[Grade alloc] initWithName:gradeName];
