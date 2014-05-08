@@ -119,6 +119,7 @@
 		dest.course = course;
 		dest.gradeSections = [self.parser getGradeSectionsFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
 		[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+		[self.tableView cellForRowAtIndexPath:indexPath].selected = NO;
 	}
 }
 
@@ -126,6 +127,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	Course* course = [self.courses objectAtIndex:[self.tableView indexPathForSelectedRow].row];
 	NSString* title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+//	NSLog(@"finished loading title: %@", title);
 	if ([title isEqualToString:[NSString stringWithFormat:@"Home - %@", course.name]]) {
 		[self loadGradesPage];
 	} else if ([title isEqualToString:[NSString stringWithFormat:@"Grades - %@ - Milwaukee", course.name]]) {
