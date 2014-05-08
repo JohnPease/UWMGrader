@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Grade;
 
 @interface GradeItemViewController : UIViewController
 
+@property(nonatomic, weak)Grade* grade;
 @property(nonatomic, weak)IBOutlet UILabel* gradeValue;
 @property(nonatomic, weak)IBOutlet UILabel* weightAchieved;
 @property(nonatomic, weak)IBOutlet UITextView* feedbackFromGrader;

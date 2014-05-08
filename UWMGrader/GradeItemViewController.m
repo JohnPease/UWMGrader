@@ -7,6 +7,7 @@
 //
 
 #import "GradeItemViewController.h"
+#import "Grade.h"
 
 @interface GradeItemViewController ()
 
@@ -27,6 +28,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	
+	self.gradeValue.text = [NSString stringWithFormat:@"score: %@", self.grade.score];
+	self.weightAchieved.text = [NSString stringWithFormat:@"weight achieved: %@", self.grade.weightAchieved];
+	self.feedbackFromGrader.text = self.grade.feedback;
+	
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	
 }
 
 - (void)didReceiveMemoryWarning

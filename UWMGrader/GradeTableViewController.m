@@ -120,6 +120,7 @@
     GradeSection* gradeSection = [self.gradeSections objectAtIndex:indexPath.section];
     Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
     dest.navigationItem.title = grade.name;
+	dest.grade = grade;
 }
 
 @end

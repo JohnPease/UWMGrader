@@ -11,7 +11,6 @@
 		523D0E3518E3B930005C4BB6 /* GradeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3418E3B930005C4BB6 /* GradeTableViewController.m */; };
 		523D0E3B18E3BA0E005C4BB6 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3A18E3BA0E005C4BB6 /* Course.m */; };
 		523D0E3E18E3BA45005C4BB6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3D18E3BA45005C4BB6 /* Grade.m */; };
-		527AB64118E4D1E600F7FEE8 /* UWMLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 527AB64018E4D1E600F7FEE8 /* UWMLogo.png */; };
 		5284650718F39575005FB632 /* GradeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284650618F39575005FB632 /* GradeItemViewController.m */; };
 		52B381B118E4751700B4612E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B018E4751700B4612E /* User.m */; };
 		52B381B418E4791100B4612E /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B318E4791100B4612E /* Score.m */; };
@@ -32,6 +31,7 @@
 		52BBA66318E3B2BA00762A72 /* UWMGraderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BBA66218E3B2BA00762A72 /* UWMGraderTests.m */; };
 		52C1038E1907396E00D0D46B /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1038D1907396E00D0D46B /* Parser.m */; };
 		52D2DA541919E30100918557 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D2DA531919E2F900918557 /* libMBProgressHUD.a */; };
+		52EB911A191C40B50046A323 /* UWMLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 527AB64018E4D1E600F7FEE8 /* UWMLogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -351,7 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				527AB64118E4D1E600F7FEE8 /* UWMLogo.png in Resources */,
+				52EB911A191C40B50046A323 /* UWMLogo.png in Resources */,
 				52BBA65018E3B2BA00762A72 /* Images.xcassets in Resources */,
 				52BBA64218E3B2BA00762A72 /* InfoPlist.strings in Resources */,
 				52BBA64B18E3B2BA00762A72 /* Main.storyboard in Resources */,
