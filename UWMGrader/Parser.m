@@ -121,15 +121,16 @@
 				gradeValue				= [HTML substringWithRange:gradeValueRange];
 			}
 			
-			/* get feedback ? */
+			/* get weight */
 			
-			/* get weight ? */
+			/* get feedback */
 			
 //			NSLog(@"\tgrade name: %@, grade value: %@", gradeName, gradeValue);
 			
 			/* create grade object and add it to gradesection */
 			Grade* grade = [[Grade alloc] initWithName:gradeName];
 			grade.score = gradeValue;
+			grade.gradeSection = gradeSectionName;
 			[gradeSection.grades addObject:grade];
 			
 			gradeStart = [HTML rangeOfString:@"<th scope=\"row\"" options:NSLiteralSearch range:NSMakeRange(gradeEnd.location, HTML.length-gradeEnd.location)];
@@ -173,6 +174,7 @@
 		/* create grade object */
 		Grade* grade = [[Grade alloc] initWithName:gradeName];
 		grade.score = gradeValue;
+		grade.gradeSection = @"Grades";
 		[gradeSection.grades addObject:grade];
 		
 		gradeStart = [HTML rangeOfString:@"<th scope=\"row\"  class=\"d_gt d_ich\"><div class=\"dco\"><div class=\"dco_c\"><div class=\"dco\"><div class=\"dco_c\"><strong>" options:NSLiteralSearch range:NSMakeRange(gradeEnd.location, HTML.length-gradeEnd.location)];

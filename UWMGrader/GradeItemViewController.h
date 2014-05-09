@@ -15,6 +15,6 @@
 @property(nonatomic, weak)IBOutlet UILabel* gradeValue;
 @property(nonatomic, weak)IBOutlet UILabel* weightAchieved;
 @property(nonatomic, weak)IBOutlet UITextView* feedbackFromGrader;
-@property(nonatomic, weak)IBOutlet UIWebView* gradeStatisticsWebView;
+@property(nonatomic, strong)IBOutlet UIWebView* gradeStatisticsWebView;
 
 @end

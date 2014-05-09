@@ -121,6 +121,7 @@
     Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
     dest.navigationItem.title = grade.name;
 	dest.grade = grade;
+	dest.gradeStatisticsWebView = self.d2lWebView;
 }
 
 @end

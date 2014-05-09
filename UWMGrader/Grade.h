@@ -15,6 +15,7 @@
 @property NSString* score;
 @property NSString* weightAchieved;
 @property NSString* feedback;
+@property NSString* gradeSection;
 
 
 - (id)init;
