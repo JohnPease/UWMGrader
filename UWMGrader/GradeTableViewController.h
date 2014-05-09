@@ -13,7 +13,7 @@
 @interface GradeTableViewController : UITableViewController
 
 @property(nonatomic,strong)Course* course;
-@property(nonatomic,strong)UIWebView* d2lWebView;
+@property(nonatomic,weak)UIWebView* d2lWebView;
 @property(nonatomic,strong)NSArray* gradeSections;
 
 @end

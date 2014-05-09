@@ -14,6 +14,7 @@
 @property(nonatomic)BOOL initialLoad;
 @property(nonatomic)int webViewLoads;
 @property(nonatomic, strong)NSString* url;
+@property(nonatomic)MBProgressHUD* activityHud;
 @end
 
 @implementation LogInViewController
@@ -26,30 +27,23 @@
 	self.d2lWebView.delegate = self;
 
 	[self.d2lWebView loadRequest:d2lLoginRequest];
-	
-	/* REMOVE THIS BEFORE SUBMITTING */
-	self.userNameTextField.text = @"jjpease";
-	self.passwordTextField.text = @"";
-    self.initialLoad = YES;
-    self.loginButton.enabled = NO;
-    self.loginButton.tintColor = [UIColor grayColor];
-	self.webViewLoads = 0;
+    self.initialLoad			= YES;
+    self.loginButton.enabled	= NO;
+    self.loginButton.tintColor	= [UIColor grayColor];
+	self.webViewLoads			= 0;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)logInButtonPressed {
-//    NSLog(@"loaded: %@", self.d2lWebView.request.URL.absoluteString);
 	NSString* login = @"document.forms.item(0).submit();";
 	NSString* usernameSet = [NSString stringWithFormat:@"document.getElementById('j_username').value = \"%@\"", self.userNameTextField.text];
 	NSString* passwordSet = [NSString stringWithFormat:@"document.getElementById('j_password').value = \"%@\"", self.passwordTextField.text];
 	
 	if ([self.userNameTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""]) {
-		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"error will robinson" message:@"please enter a username and password before logging in" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"danger, will robinson" message:@"please enter a username and password before logging in" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[error show];
 	} else {
 		[self startActivityHud];
@@ -84,7 +78,7 @@
 	
 	if (self.webViewLoads == 0) {
 		if ([self.url isEqualToString:webView.request.URL.absoluteString]) {
-			UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"you done messed up bro" message:@"please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"danger, will robinson" message:@"please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 			[error show];
 		}

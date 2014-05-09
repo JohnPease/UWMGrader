@@ -18,7 +18,6 @@
 @property(nonatomic, weak)IBOutlet UIImageView* d2lImageView;
 @property(nonatomic, weak)IBOutlet UIWebView* d2lWebView;
 @property(nonatomic, weak)IBOutlet UIButton* loginButton;
-@property(nonatomic)MBProgressHUD* activityHud;
 
 - (IBAction)logInButtonPressed;
 - (IBAction)screenTapped;

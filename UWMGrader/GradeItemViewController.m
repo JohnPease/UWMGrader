@@ -31,8 +31,9 @@
 	
 	self.gradeValue.text = [NSString stringWithFormat:@"score: %@", self.grade.score];
 	self.weightAchieved.text = [NSString stringWithFormat:@"weight achieved: %@", self.grade.weightAchieved];
-	if (self.feedbackFromGrader == nil) self.feedbackFromGrader.text = @"No feedback given";
+	if (self.grade.feedback == nil) self.feedbackFromGrader.text = @"No feedback given";
 	else self.feedbackFromGrader.text = self.grade.feedback;
+	
 	NSLog(@"stats: %@", self.gradeStatisticsWebView.request.URL.absoluteString);
 	
 }

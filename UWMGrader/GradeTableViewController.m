@@ -14,6 +14,8 @@
 #import "Parser.h"
 
 @interface GradeTableViewController ()
+@property(nonatomic)UIRefreshControl* refreshControl;
+@property(nonatomic)Parser* parser;
 @end
 
 @implementation GradeTableViewController
@@ -30,85 +32,74 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	NSLog(@"entered grades");
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-	NSArray* viewControllers = self.navigationController.viewControllers;
-	if (viewControllers.count > 1 && [viewControllers objectAtIndex:viewControllers.count-2] == self) {
-		//pushed another controller on
-	} else if ([viewControllers indexOfObject:self] == NSNotFound) {
-		//popped, going back to classes and loading mobile d2l homepage
-	}
+	
+	self.parser = [[Parser alloc] init];
+	self.refreshControl = [[UIRefreshControl alloc] init];
+	[self.refreshControl addTarget:self action:@selector(refreshTableData) forControlEvents:UIControlEventValueChanged];
+	[self.tableView addSubview:self.refreshControl];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (void)refreshTableData {
+//	[self.d2lWebView stringByEvaluatingJavaScriptFromString:self.course.url];
+	self.gradeSections = [self.parser getGradeSectionsFrom:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.course.url] encoding:NSASCIIStringEncoding error:nil]];
+	[self.refreshControl endRefreshing];
+	[self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-//#warning Potentially incomplete method implementation.
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.gradeSections.count;
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	GradeSection* gradeSection = [self.gradeSections objectAtIndex:section];
 	NSMutableString* header = [NSMutableString stringWithFormat:@"%@", gradeSection.name];
-	if (gradeSection.weightAchieved != nil) {
-		[header appendFormat:@" (%@)", gradeSection.weightAchieved];
-	}
+	if (gradeSection.weightAchieved != nil) [header appendFormat:@" (%@)", gradeSection.weightAchieved];
 	return header;
 }
 
-- (NSInteger)getIndex:(NSInteger)index withSection:(NSInteger)section {
-	for (int i = 0; i < section; ++i) {
-		GradeSection* gradeSection = [self.gradeSections objectAtIndex:i];
-		index += gradeSection.grades.count;
-	}
-	return index;
-}
+/* if i want to customize the table section headers... not sure yet */
+//- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
+//    /* Create custom view to display section header... */
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 1, tableView.frame.size.width, 30)];
+//    [label setFont:[UIFont boldSystemFontOfSize:24]];
+//	GradeSection* gradeSection = [self.gradeSections objectAtIndex:section];
+//	NSString *string = gradeSection.name;
+//    /* Section header is in 0th index... */
+//    [label setText:string];
+//    [view addSubview:label];
+////    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
+//	[view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+//    return view;
+//}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     GradeSection* gradeSection = [self.gradeSections objectAtIndex:section];
     return gradeSection.grades.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GradeCell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"GradeCell"];
-    
-    // Configure the cell...
-	/* NEED TO FIGURE THIS OUT */
-	/*
-	 notes: get section, get correct grade from that section
-	 */
+	
     GradeSection* gradeSection = [self.gradeSections objectAtIndex:indexPath.section];
     Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
-    [cell.textLabel setFont:[UIFont systemFontOfSize:12.0]];
+	
+    [cell.textLabel setFont:[UIFont systemFontOfSize:16.0]];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", grade.name];
-	if (grade.weightAchieved != nil) {
-		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, (%@)", grade.score, grade.weightAchieved];
-	} else {
-		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", grade.score];
-	}
+	
+	if (grade.weightAchieved != nil) cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, (%@)", grade.score, grade.weightAchieved];
+	else cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", grade.score];
+	
     cell.detailTextLabel.textColor = [UIColor grayColor];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	if (grade.feedback != nil) cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    else cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
 }
 
@@ -119,14 +110,12 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     GradeItemViewController *dest = segue.destinationViewController;
     NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
     GradeSection* gradeSection = [self.gradeSections objectAtIndex:indexPath.section];
     Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
+	
     dest.navigationItem.title = grade.name;
 	dest.grade = grade;
 	dest.gradeStatisticsWebView = self.d2lWebView;

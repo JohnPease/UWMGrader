@@ -16,8 +16,7 @@
 
 @property(nonatomic,strong)User* user;
 @property(nonatomic,strong)NSArray* courses;
-@property(nonatomic,strong)UIWebView* d2lWebView;
-@property(nonatomic)MBProgressHUD* activityHud;
+@property(nonatomic,weak)UIWebView* d2lWebView;
 
 - (IBAction)logoutButtonPressed;
 

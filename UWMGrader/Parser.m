@@ -117,7 +117,7 @@
 		GradeSection* gradeSection = [[GradeSection alloc] initWithName:gradeSectionName];
 		gradeSection.weightAchieved = gradeSectionWeight;
 		
-		NSLog(@"section name: %@, weight: %@", gradeSectionName, gradeSectionWeight);
+//		NSLog(@"section name: %@, weight: %@", gradeSectionName, gradeSectionWeight);
 		
 		
 		
@@ -168,14 +168,14 @@
 				gradeFeedback = [HTML substringWithRange:gradeFeedbackRange];
 			}
 			
-			NSLog(@"\tgrade name: %@, grade value: %@, grade weight: %@", gradeName, gradeValue, gradeWeight);
+//			NSLog(@"\tgrade name: %@, grade value: %@, grade weight: %@", gradeName, gradeValue, gradeWeight);
 			
 			/* create grade object and add it to gradesection */
-			Grade* grade = [[Grade alloc] initWithName:gradeName];
+			Grade* grade = [[Grade alloc] initWithName:[self replaceSpecialCharacters:gradeName]];
 			grade.score = gradeValue;
-			grade.gradeSection = gradeSectionName;
+			grade.gradeSection = [self replaceSpecialCharacters:gradeSectionName];
 			grade.weightAchieved = gradeWeight;
-			grade.feedback = gradeFeedback;
+			grade.feedback = [self replaceSpecialCharacters:gradeFeedback];
 			[gradeSection.grades addObject:grade];
 			
 			gradeStart = [HTML rangeOfString:@"<th scope=\"row\"" options:NSLiteralSearch range:NSMakeRange(gradeEnd.location, HTML.length-gradeEnd.location)];
@@ -234,13 +234,13 @@
 			gradeWeight = @"Dropped!";
 		}
 		
-		NSLog(@"grade name: %@, grade value: %@, grade weight: %@", gradeName, gradeValue, gradeWeight);
+//		NSLog(@"grade name: %@, grade value: %@, grade weight: %@", gradeName, gradeValue, gradeWeight);
 		
 		/* create grade object */
-		Grade* grade = [[Grade alloc] initWithName:gradeName];
+		Grade* grade = [[Grade alloc] initWithName:[self replaceSpecialCharacters:gradeName]];
 		grade.score = gradeValue;
 		grade.gradeSection = @"Grades";
-		grade.weightAchieved = gradeWeight;
+		grade.weightAchieved = [self replaceSpecialCharacters:gradeWeight];
 		[gradeSection.grades addObject:grade];
 		
 		gradeStart = [HTML rangeOfString:@"<th scope=\"row\"  class=\"d_gt d_ich\"><div class=\"dco\"><div class=\"dco_c\"><div class=\"dco\"><div class=\"dco_c\"><strong>" options:NSLiteralSearch range:NSMakeRange(gradeEnd.location, HTML.length-gradeEnd.location)];
@@ -250,8 +250,9 @@
 	return grades;
 }
 
-- (NSUInteger)numberOfOccurrencesOf:(NSString*)subString in:(NSString*)string {
-	NSUInteger count = 0, length = [string length];
+- (int)numberOfOccurrencesOf:(NSString*)subString in:(NSString*)string {
+	int count = 0;
+	NSInteger length = [string length];
 	NSRange range = NSMakeRange(0, length);
 	while(range.location != NSNotFound)
 	{
@@ -264,6 +265,15 @@
 	}
 	
 	return count;
+}
+
+- (NSString*)replaceSpecialCharacters:(NSString*)string {
+	NSString* returnString = string;
+	returnString = [returnString stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+	returnString = [returnString stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n\n"];
+	returnString = [returnString stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+	returnString = [returnString stringByReplacingOccurrencesOfString:@"â" withString:@"'"];
+	return returnString;
 }
 
 @end
