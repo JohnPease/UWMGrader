@@ -12,8 +12,8 @@
 @interface GradeSection : NSObject
 
 @property NSString* name;
-@property Score* totalPoints;
-@property Score* totalWeightAchieved;
+@property NSString* points;
+@property NSString* weightAchieved;
 @property NSMutableArray* grades;
 
 - (id)initWithName:(NSString*)name;

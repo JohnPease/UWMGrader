@@ -65,7 +65,11 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	GradeSection* gradeSection = [self.gradeSections objectAtIndex:section];
-	return gradeSection.name;
+	NSMutableString* header = [NSMutableString stringWithFormat:@"%@", gradeSection.name];
+	if (gradeSection.weightAchieved != nil) {
+		[header appendFormat:@" (%@)", gradeSection.weightAchieved];
+	}
+	return header;
 }
 
 - (NSInteger)getIndex:(NSInteger)index withSection:(NSInteger)section {
@@ -98,7 +102,11 @@
     Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
     [cell.textLabel setFont:[UIFont systemFontOfSize:12.0]];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", grade.name];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", grade.score];
+	if (grade.weightAchieved != nil) {
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, (%@)", grade.score, grade.weightAchieved];
+	} else {
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", grade.score];
+	}
     cell.detailTextLabel.textColor = [UIColor grayColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
