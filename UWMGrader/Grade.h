@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-@class Score;
 
 @interface Grade : NSObject
 

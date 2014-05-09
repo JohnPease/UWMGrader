@@ -7,7 +7,6 @@
 //
 
 #import "Grade.h"
-#import "Score.h"
 
 @implementation Grade
 

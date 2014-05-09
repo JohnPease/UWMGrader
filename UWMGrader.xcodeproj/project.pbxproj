@@ -15,7 +15,6 @@
 		523D0E3E18E3BA45005C4BB6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3D18E3BA45005C4BB6 /* Grade.m */; };
 		5284650718F39575005FB632 /* GradeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284650618F39575005FB632 /* GradeItemViewController.m */; };
 		52B381B118E4751700B4612E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B018E4751700B4612E /* User.m */; };
-		52B381B418E4791100B4612E /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B318E4791100B4612E /* Score.m */; };
 		52B381B718E47B7600B4612E /* GradeSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B618E47B7600B4612E /* GradeSection.m */; };
 		52BBA63818E3B2BA00762A72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BBA63718E3B2BA00762A72 /* Foundation.framework */; };
 		52BBA63A18E3B2BA00762A72 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BBA63918E3B2BA00762A72 /* CoreGraphics.framework */; };
@@ -33,6 +32,7 @@
 		52BBA66318E3B2BA00762A72 /* UWMGraderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BBA66218E3B2BA00762A72 /* UWMGraderTests.m */; };
 		52C1038E1907396E00D0D46B /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1038D1907396E00D0D46B /* Parser.m */; };
 		52D2DA541919E30100918557 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D2DA531919E2F900918557 /* libMBProgressHUD.a */; };
+		52F60022191D49F200059C45 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F60021191D49F200059C45 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +74,6 @@
 		5284650618F39575005FB632 /* GradeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeItemViewController.m; sourceTree = "<group>"; };
 		52B381AF18E4751700B4612E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		52B381B018E4751700B4612E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		52B381B218E4791100B4612E /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
-		52B381B318E4791100B4612E /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
 		52B381B518E47B7600B4612E /* GradeSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeSection.h; sourceTree = "<group>"; };
 		52B381B618E47B7600B4612E /* GradeSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeSection.m; sourceTree = "<group>"; };
 		52BBA63418E3B2BA00762A72 /* UWMGrader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UWMGrader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +98,7 @@
 		52C1038C1907396E00D0D46B /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		52C1038D1907396E00D0D46B /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		52D2DA4E1919E2F800918557 /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = "Frameworks/MBProgressHUD-master/MBProgressHUD.xcodeproj"; sourceTree = "<group>"; };
+		52F60021191D49F200059C45 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +156,6 @@
 				52B381B618E47B7600B4612E /* GradeSection.m */,
 				523D0E3C18E3BA45005C4BB6 /* Grade.h */,
 				523D0E3D18E3BA45005C4BB6 /* Grade.m */,
-				52B381B218E4791100B4612E /* Score.h */,
-				52B381B318E4791100B4612E /* Score.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -183,6 +180,7 @@
 		52BBA62B18E3B2BA00762A72 = {
 			isa = PBXGroup;
 			children = (
+				52F60021191D49F200059C45 /* Default-568h@2x.png */,
 				52BBA63D18E3B2BA00762A72 /* UWMGrader */,
 				52BBA65C18E3B2BA00762A72 /* UWMGraderTests */,
 				52BBA63618E3B2BA00762A72 /* Frameworks */,
@@ -359,6 +357,7 @@
 				52BBA65018E3B2BA00762A72 /* Images.xcassets in Resources */,
 				52BBA64218E3B2BA00762A72 /* InfoPlist.strings in Resources */,
 				52BBA64B18E3B2BA00762A72 /* Main.storyboard in Resources */,
+				52F60022191D49F200059C45 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +381,6 @@
 				523D0E3518E3B930005C4BB6 /* GradeTableViewController.m in Sources */,
 				5284650718F39575005FB632 /* GradeItemViewController.m in Sources */,
 				52C1038E1907396E00D0D46B /* Parser.m in Sources */,
-				52B381B418E4791100B4612E /* Score.m in Sources */,
 				52BBA64E18E3B2BA00762A72 /* LogInViewController.m in Sources */,
 				523D0E3E18E3BA45005C4BB6 /* Grade.m in Sources */,
 				52BBA64818E3B2BA00762A72 /* AppDelegate.m in Sources */,
