@@ -94,7 +94,7 @@
     [cell.textLabel setFont:[UIFont systemFontOfSize:16.0]];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", grade.name];
 	
-	if (grade.weightAchieved != nil) cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, (%@)", grade.score, grade.weightAchieved];
+	if (grade.weightAchieved != nil) cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - (%@)", grade.score, grade.weightAchieved];
 	else cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", grade.score];
 	
     cell.detailTextLabel.textColor = [UIColor grayColor];
