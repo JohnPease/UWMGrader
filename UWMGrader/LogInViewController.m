@@ -29,7 +29,7 @@
 	[self.d2lWebView loadRequest:d2lLoginRequest];
     self.initialLoad			= YES;
     self.loginButton.enabled	= NO;
-    self.loginButton.tintColor	= [UIColor grayColor];
+	[self.loginButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
 	self.webViewLoads			= 0;
 }
 
@@ -38,6 +38,7 @@
 }
 
 - (IBAction)logInButtonPressed {
+	if (![self networkConnection]) return;
 	NSString* login = @"document.forms.item(0).submit();";
 	NSString* usernameSet = [NSString stringWithFormat:@"document.getElementById('j_username').value = \"%@\"", self.userNameTextField.text];
 	NSString* passwordSet = [NSString stringWithFormat:@"document.getElementById('j_password').value = \"%@\"", self.passwordTextField.text];
@@ -88,7 +89,7 @@
     
     if (self.initialLoad == YES && [webView.request.URL.absoluteString isEqualToString:@"https://idp.uwm.edu/idp/Authn/UserPassword"]) {
         self.loginButton.enabled = YES;
-        self.loginButton.tintColor = [UIColor blackColor];
+		[self.loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         self.initialLoad = NO;
     }
 	
@@ -110,6 +111,18 @@
 	self.activityHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 	self.activityHud = MBProgressHUDModeIndeterminate;
 	self.activityHud.labelText = @"loading";
+}
+
+- (BOOL)networkConnection {
+	Reachability* networkReachability = [Reachability reachabilityForInternetConnection];
+	NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+	if (networkStatus == NotReachable) {
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"danger, will robinson" message:@"You need an active internet connection to use this app" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[error show];
+		return false;
+	} else {
+		return true;
+	}
 }
 
 @end
