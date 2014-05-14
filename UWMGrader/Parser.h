@@ -14,5 +14,6 @@
 
 - (NSMutableArray*)getCoursesFrom:(NSString*)HTML;
 - (NSMutableArray*)getGradeSectionsFrom:(NSString*)HTML;
+- (NSString*)getLoadMoreJS:(NSString*)HTML;
 
 @end

@@ -116,6 +116,8 @@
     GradeSection* gradeSection = [self.gradeSections objectAtIndex:indexPath.section];
     Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
 	
+	NSLog(@"%@", self.d2lWebView.request.URL.absoluteString);
+	
     dest.navigationItem.title = grade.name;
 	dest.grade = grade;
 	dest.gradeStatisticsWebView = self.d2lWebView;

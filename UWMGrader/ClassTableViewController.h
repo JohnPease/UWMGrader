@@ -16,7 +16,7 @@
 
 @property(nonatomic,strong)User* user;
 @property(nonatomic,strong)NSArray* courses;
-@property(nonatomic,weak)UIWebView* d2lWebView;
+@property(nonatomic,strong)UIWebView* d2lWebView;
 
 - (IBAction)logoutButtonPressed;
 

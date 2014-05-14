@@ -56,7 +56,6 @@
 }
 
 - (void)refreshTableData {
-	NSLog(@"refresh");
 	self.courses = [self.parser getCoursesFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
 	[self.refreshControl endRefreshing];
 	[self.tableView reloadData];

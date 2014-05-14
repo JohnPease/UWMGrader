@@ -21,6 +21,15 @@
 	return self;
 }
 
+- (NSString*)getLatestClassesMonth:(NSString*)forMonth {
+	NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+	int date = [components month];
+	int htmlDate = [forMonth intValue];
+	
+	
+	return [NSString stringWithFormat:@"%i", date];
+}
+
 /**
  *  Returns an array of course objects containing names and urls
  *
@@ -33,12 +42,29 @@
 	
 	NSRange courseLineStart = [HTML rangeOfString:@"<li class=\"d2l-itemlist-simple d2l-itemlist-arrow d2l-itemlist-short\">"];
 	NSRange coursesEnd = [HTML rangeOfString:@"<li class=\"d2l-itemlist-loadmore"];
-	while (courseLineStart.length != 0) {
-		NSRange courseLineEnd = [HTML rangeOfString:@"</span><div class=\"d2l-clear\"></div>" options:NSLiteralSearch range:NSMakeRange(courseLineStart.location, courseLineStart.location+1)];
+	BOOL stillInClasses = NO;
+	NSString* newestGrades = @"";
+	
+	while (courseLineStart.location != NSNotFound && courseLineStart.location < coursesEnd.location) {
+		NSRange courseLineEnd = [HTML rangeOfString:@"</div></a></li>" options:NSLiteralSearch range:NSMakeRange(courseLineStart.location, coursesEnd.location-courseLineStart.location)];
 		if (courseLineEnd.location == NSNotFound) break; /* FIX THIS ASAP */
 		NSRange liRange = NSMakeRange(courseLineStart.location, (courseLineEnd.location	- courseLineStart.location));
 		NSString* wholeLine = [HTML substringWithRange:liRange];
-		if ([wholeLine rangeOfString:@"ended on 5/"].location == NSNotFound) break;
+		
+		if ([wholeLine rangeOfString:@"ended on"].location == NSNotFound && stillInClasses == NO) {
+			stillInClasses = YES;
+		}
+		
+		if (stillInClasses == NO) {
+			NSRange endStart = [wholeLine rangeOfString:@"ended on "];
+			NSRange endEnd = [wholeLine rangeOfString:@"/" options:NSLiteralSearch range:NSMakeRange(endStart.location, wholeLine.length-endStart.location)];
+			NSRange endRange = NSMakeRange(endStart.location+9, endEnd.location-endStart.location-9);
+			NSString* end = [wholeLine substringWithRange:endRange];
+			if ([newestGrades isEqualToString:@""]) newestGrades = end;
+			else if (![end isEqualToString:newestGrades]) {
+				break;
+			}
+		}
 		
 		/* get js link */
 		NSRange jsStart = [HTML rangeOfString:@"onclick=\"" options:NSLiteralSearch range:NSMakeRange(courseLineStart.location, courseLineStart.location+1)];
@@ -51,6 +77,8 @@
 		NSRange courseNameEnd = [HTML rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(courseNameStart.location+20, courseLineEnd.location - courseNameStart.location)];
 		NSRange courseNameRange = NSMakeRange(courseNameStart.location+20, (courseNameEnd.location - courseNameStart.location - 20));
 		NSString* courseName = [HTML substringWithRange:courseNameRange];
+		
+		courseName = [self replaceSpecialCharacters:courseName];
 		
 		/* create course object and add it to array */
 		Course* course = [[Course alloc] initWithName:courseName];
@@ -248,6 +276,21 @@
 	
 	[grades addObject:gradeSection];
 	return grades;
+}
+
+- (NSString*)getLoadMoreJS:(NSString*)HTML {
+	NSString* js = @"not found";
+	
+	NSRange start = [HTML rangeOfString:@"<li class=\"d2l-itemlist-loadmore\""];
+	if (start.location != NSNotFound) {
+		start = [HTML rangeOfString:@"onclick=\"D2L.O" options:NSLiteralSearch range:NSMakeRange(start.location, HTML.length-start.location)];
+		NSRange end = [HTML rangeOfString:@"\">Load more...<" options:NSLiteralSearch range:NSMakeRange(start.location, HTML.length-start.location)];
+		NSRange range = NSMakeRange(start.location+9, end.location-start.location-9);
+		js = [HTML substringWithRange:range];
+		js = [js stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+	}
+	
+	return js;
 }
 
 - (int)numberOfOccurrencesOf:(NSString*)subString in:(NSString*)string {

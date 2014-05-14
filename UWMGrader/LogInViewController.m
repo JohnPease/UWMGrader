@@ -15,6 +15,7 @@
 @property(nonatomic)int webViewLoads;
 @property(nonatomic, strong)NSString* url;
 @property(nonatomic)MBProgressHUD* activityHud;
+@property(nonatomic)Parser* parser;
 @end
 
 @implementation LogInViewController
@@ -25,6 +26,7 @@
 	
 	NSURLRequest* d2lLoginRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:D2LLoginUrl]];
 	self.d2lWebView.delegate = self;
+	self.parser = [[Parser alloc] init];
 
 	[self.d2lWebView loadRequest:d2lLoginRequest];
     self.initialLoad			= YES;
@@ -96,13 +98,14 @@
 	if ([webView.request.URL.absoluteString isEqualToString:@"https://uwm.courses.wisconsin.edu/d2l/m/home"]) {
 		[self performSegueWithIdentifier:@"LoginSegue" sender:self];
 	}
+	[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController* dest = segue.destinationViewController;
     ClassTableViewController* destination = [dest.childViewControllers objectAtIndex:0];
-	Parser* p = [[Parser alloc] init];
-	destination.courses = [p getCoursesFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
+	
+	destination.courses = [self.parser getCoursesFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
 	[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 	destination.d2lWebView = self.d2lWebView;
 }
