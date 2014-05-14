@@ -19,5 +19,7 @@
 
 - (id)init;
 - (id)initWithName:(NSString*)name;
+- (double)getPoints;
+- (double)getMax;
 
 @end

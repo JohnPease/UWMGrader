@@ -30,11 +30,12 @@
     // Do any additional setup after loading the view.
 	
 	self.gradeValue.text = [NSString stringWithFormat:@"score: %@", self.grade.score];
-	self.weightAchieved.text = [NSString stringWithFormat:@"weight achieved: %@", self.grade.weightAchieved];
+	
+	if (self.grade.weightAchieved == nil) self.weightAchieved.text = @"Weight not provided";
+	else self.weightAchieved.text = [NSString stringWithFormat:@"weight achieved: %@", self.grade.weightAchieved];
+	
 	if (self.grade.feedback == nil) self.feedbackFromGrader.text = @"No feedback given";
 	else self.feedbackFromGrader.text = self.grade.feedback;
-	
-	NSLog(@"stats: %@", self.gradeStatisticsWebView.request.URL.absoluteString);
 	
 }
 
@@ -46,6 +47,84 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)shareToTwitter {
+	if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+		SLComposeViewController* tweetView = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+		NSString* tweet = [self generateSocialMessage];
+		
+		[tweetView setInitialText:tweet];
+		[self presentViewController:tweetView animated:YES completion:nil];
+	} else {
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"Log into twitter!" message:@"You must be logged into twitter on this device to use this feature" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[error show];
+	}
+}
+
+- (IBAction)shareToFacebook {
+	if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+		SLComposeViewController* facebookView = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+		NSString* status = [self generateSocialMessage];
+		
+		[facebookView setInitialText:status];
+		[self presentViewController:facebookView animated:YES completion:nil];
+	} else {
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"Log into twitter!" message:@"You must be logged into Facebook on this device to use this feature" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[error show];
+	}
+}
+
+- (NSString*)generateSocialMessage {
+	
+	if ([self.grade.score isEqualToString:@"Not provided"]) {
+		return @"You sure you want to share this even though it has no score?";
+	}
+	
+	double pointsAchieved = [self.grade getPoints];
+	double maxPoints = [self.grade getMax];
+	
+	if (pointsAchieved == -1.0 || maxPoints == -1.0) {
+		return @"Hooray for grades not entered!";
+	} else {
+		double score = pointsAchieved / maxPoints;
+		NSString* adj;
+		if (score < .1) {
+			adj = @"whyamisharingthis";
+		} else if (score < .5) {
+			//get from bad section
+			adj = [self getAdjective:@"bad"];
+		} else if (score < .7) {
+			//get from mid section
+			adj = [self getAdjective:@"mid"];
+		} else {
+			//get from good section
+			adj = [self getAdjective:@"good"];
+		}
+		
+		NSString* msg = @"DANGER WILL ROBINSON";
+		
+		if ([adj isEqualToString:@""]) {
+			msg = [NSString stringWithFormat:@"I got a %@ on %@ in %@!", self.grade.score, self.grade.name, self.courseName];
+		} else {
+			msg = [NSString stringWithFormat:@"I got a %@ on %@ in %@!, %@", self.grade.score, self.grade.name, self.courseName, adj];
+		}
+		return msg;
+	}
+	
+	return @"enter a message here";
+}
+
+- (NSString*)getAdjective:(NSString*)scoreType {
+	NSString* filePath = [[NSBundle mainBundle] pathForResource:scoreType ofType:@"txt"];
+	NSError* error;
+	NSString* fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+	if (error) {
+		return @"";
+	}
+	
+	NSArray* fileLines = [fileContents componentsSeparatedByString:@"\n"];
+	return [fileLines objectAtIndex:arc4random_uniform((int)[fileLines count])];
 }
 
 /*

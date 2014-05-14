@@ -119,8 +119,8 @@
 	NSLog(@"%@", self.d2lWebView.request.URL.absoluteString);
 	
     dest.navigationItem.title = grade.name;
+	dest.courseName = self.navigationItem.title;
 	dest.grade = grade;
-	dest.gradeStatisticsWebView = self.d2lWebView;
 }
 
 @end

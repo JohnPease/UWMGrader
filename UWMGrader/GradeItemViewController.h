@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
 @class Grade;
 
 @interface GradeItemViewController : UIViewController
@@ -15,6 +16,9 @@
 @property(nonatomic, weak)IBOutlet UILabel* gradeValue;
 @property(nonatomic, weak)IBOutlet UILabel* weightAchieved;
 @property(nonatomic, weak)IBOutlet UITextView* feedbackFromGrader;
-@property(nonatomic, strong)IBOutlet UIWebView* gradeStatisticsWebView;
+@property(nonatomic, weak)NSString* courseName;
+
+- (IBAction)shareToTwitter;
+- (IBAction)shareToFacebook;
 
 @end

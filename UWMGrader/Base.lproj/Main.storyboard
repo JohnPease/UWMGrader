@@ -196,24 +196,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCQ-Ar-KOS">
-                                <rect key="frame" x="20" y="304" width="280" height="244"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2K-41-b3w">
+                                <rect key="frame" x="77" y="339" width="166" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grade Statistics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kat-K5-yri">
-                                <rect key="frame" x="20" y="275" width="280" height="21"/>
+                                <state key="normal" title="Share to Twitter">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareToTwitter" destination="ofa-ap-2d1" eventType="touchUpInside" id="lLU-U5-1xE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m46-a2-fNc">
+                                <rect key="frame" x="77" y="377" width="166" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Share to Facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareToFacebook" destination="ofa-ap-2d1" eventType="touchUpInside" id="cWd-7p-kHQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="i5M-mO-4tN"/>
                     <connections>
                         <outlet property="feedbackFromGrader" destination="yuj-Ru-cPX" id="4kV-v6-wkw"/>
-                        <outlet property="gradeStatisticsWebView" destination="YCQ-Ar-KOS" id="zse-19-O05"/>
                         <outlet property="gradeValue" destination="KNR-cn-Wd2" id="rdG-no-Jru"/>
                         <outlet property="weightAchieved" destination="coq-kV-yxa" id="hd3-Gd-aOd"/>
                     </connections>

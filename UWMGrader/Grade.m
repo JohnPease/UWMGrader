@@ -22,4 +22,29 @@
 	return self;
 }
 
+
+- (double)getPoints {
+	if ([self.score isEqualToString:@"Not provided"]) {
+		return -1.0;
+	}
+	NSArray* split = [[self.score stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsSeparatedByString:@"/"];
+	if ([[split objectAtIndex:0] isEqualToString:@"-"]) {
+		return -1.0;
+	} else {
+		return [[split objectAtIndex:0] doubleValue];
+	}
+}
+
+- (double)getMax {
+	if ([self.score isEqualToString:@"Not provided"]) {
+		return -1.0;
+	}
+	NSArray* split = [[self.score stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsSeparatedByString:@"/"];
+	if ([[split objectAtIndex:1] isEqualToString:@"-"]) {
+		return -1.0;
+	} else {
+		return [[split objectAtIndex:1] doubleValue];
+	}
+}
+
 @end

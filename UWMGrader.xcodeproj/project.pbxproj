@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		521C627F1923AB39002EE9AB /* bad.txt in Resources */ = {isa = PBXBuildFile; fileRef = 521C627C1923AB39002EE9AB /* bad.txt */; };
+		521C62801923AB39002EE9AB /* good.txt in Resources */ = {isa = PBXBuildFile; fileRef = 521C627D1923AB39002EE9AB /* good.txt */; };
+		521C62811923AB39002EE9AB /* mid.txt in Resources */ = {isa = PBXBuildFile; fileRef = 521C627E1923AB39002EE9AB /* mid.txt */; };
 		5220B0A4191D3C2E00C745D3 /* UWMLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5220B0A3191D3C2E00C745D3 /* UWMLogo.png */; };
 		5220B0A6191D401D00C745D3 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5220B0A5191D401D00C745D3 /* LaunchImage.png */; };
 		523D0E3218E3B913005C4BB6 /* ClassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3118E3B913005C4BB6 /* ClassTableViewController.m */; };
@@ -15,6 +18,7 @@
 		523D0E3E18E3BA45005C4BB6 /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = 523D0E3D18E3BA45005C4BB6 /* Grade.m */; };
 		525941221921527A001FA5FB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525941211921527A001FA5FB /* SystemConfiguration.framework */; };
 		525941251921541C001FA5FB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 525941241921541C001FA5FB /* Reachability.m */; };
+		5278C26319239A7F00974C69 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5278C26219239A7F00974C69 /* Social.framework */; };
 		5284650718F39575005FB632 /* GradeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284650618F39575005FB632 /* GradeItemViewController.m */; };
 		52B381B118E4751700B4612E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B018E4751700B4612E /* User.m */; };
 		52B381B718E47B7600B4612E /* GradeSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B618E47B7600B4612E /* GradeSection.m */; };
@@ -62,6 +66,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		521C627C1923AB39002EE9AB /* bad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bad.txt; path = MessageText/bad.txt; sourceTree = SOURCE_ROOT; };
+		521C627D1923AB39002EE9AB /* good.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = good.txt; path = MessageText/good.txt; sourceTree = SOURCE_ROOT; };
+		521C627E1923AB39002EE9AB /* mid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mid.txt; path = MessageText/mid.txt; sourceTree = SOURCE_ROOT; };
 		5220B0A3191D3C2E00C745D3 /* UWMLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UWMLogo.png; sourceTree = "<group>"; };
 		5220B0A5191D401D00C745D3 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		523D0E3018E3B913005C4BB6 /* ClassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassTableViewController.h; sourceTree = "<group>"; };
@@ -75,6 +82,7 @@
 		525941211921527A001FA5FB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		525941231921541C001FA5FB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		525941241921541C001FA5FB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5278C26219239A7F00974C69 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5284650518F39575005FB632 /* GradeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeItemViewController.h; sourceTree = "<group>"; };
 		5284650618F39575005FB632 /* GradeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeItemViewController.m; sourceTree = "<group>"; };
 		52B381AF18E4751700B4612E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -111,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5278C26319239A7F00974C69 /* Social.framework in Frameworks */,
 				525941221921527A001FA5FB /* SystemConfiguration.framework in Frameworks */,
 				52D2DA541919E30100918557 /* libMBProgressHUD.a in Frameworks */,
 				52BBA63A18E3B2BA00762A72 /* CoreGraphics.framework in Frameworks */,
@@ -132,6 +141,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		521C627B1923AB25002EE9AB /* MessageTxt */ = {
+			isa = PBXGroup;
+			children = (
+				521C627C1923AB39002EE9AB /* bad.txt */,
+				521C627D1923AB39002EE9AB /* good.txt */,
+				521C627E1923AB39002EE9AB /* mid.txt */,
+			);
+			name = MessageTxt;
+			sourceTree = "<group>";
+		};
 		523D0E3F18E3BAB7005C4BB6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +227,7 @@
 		52BBA63618E3B2BA00762A72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5278C26219239A7F00974C69 /* Social.framework */,
 				525941211921527A001FA5FB /* SystemConfiguration.framework */,
 				52D2DA4E1919E2F800918557 /* MBProgressHUD.xcodeproj */,
 				52BBA63718E3B2BA00762A72 /* Foundation.framework */,
@@ -221,6 +241,7 @@
 		52BBA63D18E3B2BA00762A72 /* UWMGrader */ = {
 			isa = PBXGroup;
 			children = (
+				521C627B1923AB25002EE9AB /* MessageTxt */,
 				527AB63F18E4D1E600F7FEE8 /* Images */,
 				52B4A0371919D2C60016E991 /* View */,
 				523D0E3F18E3BAB7005C4BB6 /* Controller */,
@@ -364,9 +385,12 @@
 				5220B0A4191D3C2E00C745D3 /* UWMLogo.png in Resources */,
 				5220B0A6191D401D00C745D3 /* LaunchImage.png in Resources */,
 				52BBA65018E3B2BA00762A72 /* Images.xcassets in Resources */,
+				521C627F1923AB39002EE9AB /* bad.txt in Resources */,
 				52BBA64218E3B2BA00762A72 /* InfoPlist.strings in Resources */,
 				52BBA64B18E3B2BA00762A72 /* Main.storyboard in Resources */,
+				521C62811923AB39002EE9AB /* mid.txt in Resources */,
 				52F60022191D49F200059C45 /* Default-568h@2x.png in Resources */,
+				521C62801923AB39002EE9AB /* good.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
