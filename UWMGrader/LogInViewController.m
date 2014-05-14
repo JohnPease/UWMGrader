@@ -49,7 +49,7 @@
 	NSString* passwordSet = [NSString stringWithFormat:@"document.getElementById('j_password').value = \"%@\"", self.passwordTextField.text];
 	
 	if ([self.userNameTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""]) {
-		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"danger, will robinson" message:@"please enter a username and password before logging in" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"error" message:@"please enter a username and password before logging in" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[error show];
 	} else {
 		[self startActivityHud];
@@ -107,7 +107,7 @@
 	
 	if (self.webViewLoads == 0) {
 		if ([self.url isEqualToString:webView.request.URL.absoluteString]) {
-			UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"danger, will robinson" message:@"please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+			UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"invalid username/password" message:@"please enter a valid username and password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 			[error show];
 		}
@@ -124,7 +124,6 @@
 	if ([webView.request.URL.absoluteString isEqualToString:@"https://uwm.courses.wisconsin.edu/d2l/m/home"]) {
 		[self performSegueWithIdentifier:@"LoginSegue" sender:self];
 	}
-	[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -141,17 +140,5 @@
 	self.activityHud = MBProgressHUDModeIndeterminate;
 	self.activityHud.labelText = @"loading";
 }
-
-//- (BOOL)networkConnection {
-//	Reachability* networkReachability = [Reachability reachabilityForInternetConnection];
-//	NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
-//	if (networkStatus == NotReachable) {
-//		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"danger, will robinson" message:@"You need an active internet connection to use this app" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//		[error show];
-//		return false;
-//	} else {
-//		return true;
-//	}
-//}
 
 @end

@@ -19,6 +19,7 @@
 		525941251921541C001FA5FB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 525941241921541C001FA5FB /* Reachability.m */; };
 		5278C26319239A7F00974C69 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5278C26219239A7F00974C69 /* Social.framework */; };
 		5284650718F39575005FB632 /* GradeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284650618F39575005FB632 /* GradeItemViewController.m */; };
+		529672121923CE58000B0192 /* AppIphoneRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 529672111923CE58000B0192 /* AppIphoneRetina.png */; };
 		52B381B118E4751700B4612E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B018E4751700B4612E /* User.m */; };
 		52B381B718E47B7600B4612E /* GradeSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B381B618E47B7600B4612E /* GradeSection.m */; };
 		52BBA63818E3B2BA00762A72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BBA63718E3B2BA00762A72 /* Foundation.framework */; };
@@ -85,6 +86,7 @@
 		5278C26219239A7F00974C69 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5284650518F39575005FB632 /* GradeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeItemViewController.h; sourceTree = "<group>"; };
 		5284650618F39575005FB632 /* GradeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeItemViewController.m; sourceTree = "<group>"; };
+		529672111923CE58000B0192 /* AppIphoneRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIphoneRetina.png; sourceTree = "<group>"; };
 		52B381AF18E4751700B4612E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		52B381B018E4751700B4612E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		52B381B518E47B7600B4612E /* GradeSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeSection.h; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		527AB63F18E4D1E600F7FEE8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				529672111923CE58000B0192 /* AppIphoneRetina.png */,
 				52C790B51923BA0A00A4E85C /* LaunchImage3-5.png */,
 				52C790B61923BA0A00A4E85C /* LaunchImage4.png */,
 				5220B0A3191D3C2E00C745D3 /* UWMLogo.png */,
@@ -391,6 +394,7 @@
 				52C790B71923BA0A00A4E85C /* LaunchImage3-5.png in Resources */,
 				52BBA64218E3B2BA00762A72 /* InfoPlist.strings in Resources */,
 				52BBA64B18E3B2BA00762A72 /* Main.storyboard in Resources */,
+				529672121923CE58000B0192 /* AppIphoneRetina.png in Resources */,
 				521C62811923AB39002EE9AB /* mid.txt in Resources */,
 				52F60022191D49F200059C45 /* Default-568h@2x.png in Resources */,
 				521C62801923AB39002EE9AB /* good.txt in Resources */,
@@ -552,7 +556,6 @@
 		52BBA66718E3B2BA00762A72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UWMGrader/UWMGrader-Prefix.pch";
 				INFOPLIST_FILE = "UWMGrader/UWMGrader-Info.plist";
@@ -565,7 +568,6 @@
 		52BBA66818E3B2BA00762A72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UWMGrader/UWMGrader-Prefix.pch";
 				INFOPLIST_FILE = "UWMGrader/UWMGrader-Info.plist";

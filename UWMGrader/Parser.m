@@ -21,15 +21,6 @@
 	return self;
 }
 
-- (NSString*)getLatestClassesMonth:(NSString*)forMonth {
-	NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
-	int date = [components month];
-	int htmlDate = [forMonth intValue];
-	
-	
-	return [NSString stringWithFormat:@"%i", date];
-}
-
 /**
  *  Returns an array of course objects containing names and urls
  *
