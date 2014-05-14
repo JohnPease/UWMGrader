@@ -9,6 +9,7 @@
 #import "LogInViewController.h"
 #import "ClassTableViewController.h"
 #import "Parser.h"
+#import "Reachability.h"
 
 @interface LogInViewController ()
 @property(nonatomic)BOOL initialLoad;
@@ -16,6 +17,7 @@
 @property(nonatomic, strong)NSString* url;
 @property(nonatomic)MBProgressHUD* activityHud;
 @property(nonatomic)Parser* parser;
+@property(nonatomic)Reachability* reachability;
 @end
 
 @implementation LogInViewController
@@ -27,6 +29,7 @@
 	NSURLRequest* d2lLoginRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:D2LLoginUrl]];
 	self.d2lWebView.delegate = self;
 	self.parser = [[Parser alloc] init];
+	self.reachability = [[Reachability alloc] init];
 
 	[self.d2lWebView loadRequest:d2lLoginRequest];
     self.initialLoad			= YES;
@@ -40,7 +43,7 @@
 }
 
 - (IBAction)logInButtonPressed {
-	if (![self networkConnection]) return;
+	if (![self.reachability networkConnection]) return;
 	NSString* login = @"document.forms.item(0).submit();";
 	NSString* usernameSet = [NSString stringWithFormat:@"document.getElementById('j_username').value = \"%@\"", self.userNameTextField.text];
 	NSString* passwordSet = [NSString stringWithFormat:@"document.getElementById('j_password').value = \"%@\"", self.passwordTextField.text];
@@ -65,6 +68,29 @@
 		[self logInButtonPressed];
 	}
 	return NO;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+	CGFloat keyboardHeight = 216;
+	
+	if (textField.center.y > self.view.bounds.size.height - keyboardHeight) {
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationDuration:0.3];
+		self.view.frame = CGRectOffset(self.view.frame, 0, (textField.center.y - self.view.bounds.size.height));
+		[UIView commitAnimations];
+	}
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+	CGFloat keyboardHeight = 216;
+	
+	if (textField.center.y > self.view.bounds.size.height - keyboardHeight) {
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationDuration:0.3];
+		self.view.frame = CGRectOffset(self.view.frame, 0, (textField.center.y - self.view.bounds.size.height)*-1);
+		[UIView commitAnimations];
+	}
+	
 }
 
 - (IBAction)screenTapped {
@@ -116,16 +142,16 @@
 	self.activityHud.labelText = @"loading";
 }
 
-- (BOOL)networkConnection {
-	Reachability* networkReachability = [Reachability reachabilityForInternetConnection];
-	NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
-	if (networkStatus == NotReachable) {
-		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"danger, will robinson" message:@"You need an active internet connection to use this app" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		[error show];
-		return false;
-	} else {
-		return true;
-	}
-}
+//- (BOOL)networkConnection {
+//	Reachability* networkReachability = [Reachability reachabilityForInternetConnection];
+//	NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+//	if (networkStatus == NotReachable) {
+//		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"danger, will robinson" message:@"You need an active internet connection to use this app" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//		[error show];
+//		return false;
+//	} else {
+//		return true;
+//	}
+//}
 
 @end

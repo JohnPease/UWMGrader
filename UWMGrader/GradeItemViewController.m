@@ -8,9 +8,10 @@
 
 #import "GradeItemViewController.h"
 #import "Grade.h"
+#import "Reachability.h"
 
 @interface GradeItemViewController ()
-
+@property(nonatomic)Reachability* reachability;
 @end
 
 @implementation GradeItemViewController
@@ -28,6 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	self.reachability = [[Reachability alloc] init];
 	
 	self.gradeValue.text = [NSString stringWithFormat:@"score: %@", self.grade.score];
 	
@@ -50,9 +52,15 @@
 }
 
 - (IBAction)shareToTwitter {
+	if (![self.reachability networkConnection]) {
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"Network Connection Error" message:@"You need a network connection to tweet" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[error show];
+		return;
+	}
+	
 	if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
 		SLComposeViewController* tweetView = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-		NSString* tweet = [self generateSocialMessage];
+		NSString* tweet = [NSString stringWithFormat:@"%@\n- sent via UWMGrader", [self generateSocialMessage]];
 		
 		[tweetView setInitialText:tweet];
 		[self presentViewController:tweetView animated:YES completion:nil];
@@ -63,9 +71,15 @@
 }
 
 - (IBAction)shareToFacebook {
+	if (![self.reachability networkConnection]) {
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"Network Connection Error" message:@"You need a network connection to do use facebook" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[error show];
+		return;
+	}
+	
 	if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
 		SLComposeViewController* facebookView = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-		NSString* status = [self generateSocialMessage];
+		NSString* status = [NSString stringWithFormat:@"%@\n- sent via UWMGrader", [self generateSocialMessage]];
 		
 		[facebookView setInitialText:status];
 		[self presentViewController:facebookView animated:YES completion:nil];
@@ -120,7 +134,7 @@
 	NSError* error;
 	NSString* fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
 	if (error) {
-		return @"";
+		return @"error";
 	}
 	
 	NSArray* fileLines = [fileContents componentsSeparatedByString:@"\n"];

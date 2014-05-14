@@ -95,6 +95,8 @@ extern NSString *kReachabilityChangedNotification;
  */
 - (BOOL)connectionRequired;
 
+- (BOOL)networkConnection;
+
 @end
 
 

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
-#import "Reachability.h"
 
 #define D2LLoginUrl @"https://uwm.courses.wisconsin.edu/Shibboleth.sso/Login?target=https://uwm.courses.wisconsin.edu/d2l/shibbolethSSO/deepLinkLogin.d2l"
 

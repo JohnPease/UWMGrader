@@ -60,7 +60,7 @@ NSString *kReachabilityChangedNotification = @"kNetworkReachabilityChangedNotifi
 
 #pragma mark - Supporting functions
 
-#define kShouldPrintReachabilityFlags 1
+#define kShouldPrintReachabilityFlags 0
 
 static void PrintReachabilityFlags(SCNetworkReachabilityFlags flags, const char* comment)
 {
@@ -305,6 +305,18 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	}
     
 	return returnValue;
+}
+
+- (BOOL)networkConnection {
+	Reachability* networkReachability = [Reachability reachabilityForInternetConnection];
+	NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+	if (networkStatus == NotReachable) {
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"danger, will robinson" message:@"You need an active internet connection to use this app" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[error show];
+		return false;
+	} else {
+		return true;
+	}
 }
 
 

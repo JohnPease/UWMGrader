@@ -98,7 +98,6 @@
  *  @return an array of gradesection objects parsed from HTML
  */
 - (NSMutableArray*)getGradeSectionsFrom:(NSString*)HTML {
-//	NSLog(@"%@", HTML);
 	NSMutableArray* gradeSections = [[NSMutableArray alloc] init];
 	
 	int gradeSectionCount = [self numberOfOccurrencesOf:@"<th scope=\"row\"  colspan=\"2\" class=\"d_gt d_ich\" style=\"border-left:none;\"><div class=\"dco\"><div class=\"dco_c\"><div class=\"dco\"><div class=\"dco_c\"><strong>" in:HTML];
@@ -144,8 +143,6 @@
 		
 		GradeSection* gradeSection = [[GradeSection alloc] initWithName:gradeSectionName];
 		gradeSection.weightAchieved = gradeSectionWeight;
-		
-//		NSLog(@"section name: %@, weight: %@", gradeSectionName, gradeSectionWeight);
 		
 		
 		
@@ -196,8 +193,6 @@
 				gradeFeedback = [HTML substringWithRange:gradeFeedbackRange];
 			}
 			
-//			NSLog(@"\tgrade name: %@, grade value: %@, grade weight: %@", gradeName, gradeValue, gradeWeight);
-			
 			/* create grade object and add it to gradesection */
 			Grade* grade = [[Grade alloc] initWithName:[self replaceSpecialCharacters:gradeName]];
 			grade.score = gradeValue;
@@ -221,7 +216,6 @@
  *  @return an array of gradesection objects
  */
 - (NSMutableArray*)getGradesFrom:(NSString*)HTML {
-//	NSLog(@"%@", HTML);
 	NSMutableArray* grades = [[NSMutableArray alloc] init];
 	GradeSection* gradeSection = [[GradeSection alloc] initWithName:@"Grades"];
 	
@@ -261,8 +255,6 @@
 		if ([gradeWeight isEqualToString:@"0 / 0"]) {
 			gradeWeight = @"Dropped!";
 		}
-		
-//		NSLog(@"grade name: %@, grade value: %@, grade weight: %@", gradeName, gradeValue, gradeWeight);
 		
 		/* create grade object */
 		Grade* grade = [[Grade alloc] initWithName:[self replaceSpecialCharacters:gradeName]];

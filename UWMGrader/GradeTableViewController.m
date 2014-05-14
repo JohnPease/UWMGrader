@@ -12,10 +12,12 @@
 #import "Grade.h"
 #import "Course.h"
 #import "Parser.h"
+#import "Reachability.h"
 
 @interface GradeTableViewController ()
 @property(nonatomic)UIRefreshControl* refreshControl;
 @property(nonatomic)Parser* parser;
+@property(nonatomic)Reachability* reachability;
 @end
 
 @implementation GradeTableViewController
@@ -35,6 +37,7 @@
 	
 	self.parser = [[Parser alloc] init];
 	self.refreshControl = [[UIRefreshControl alloc] init];
+	self.reachability = [[Reachability alloc] init];
 	[self.refreshControl addTarget:self action:@selector(refreshTableData) forControlEvents:UIControlEventValueChanged];
 	[self.tableView addSubview:self.refreshControl];
 }
@@ -46,6 +49,12 @@
 
 - (void)refreshTableData {
 //	[self.d2lWebView stringByEvaluatingJavaScriptFromString:self.course.url];
+	if (![self.reachability networkConnection]) {
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"Network Connection Error" message:@"You need a network connection to do this" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[error show];
+		[self.refreshControl endRefreshing];
+		return;
+	}
 	self.gradeSections = [self.parser getGradeSectionsFrom:[NSString stringWithContentsOfURL:[NSURL URLWithString:self.course.url] encoding:NSASCIIStringEncoding error:nil]];
 	[self.refreshControl endRefreshing];
 	[self.tableView reloadData];
@@ -63,22 +72,6 @@
 	if (gradeSection.weightAchieved != nil) [header appendFormat:@" (%@)", gradeSection.weightAchieved];
 	return header;
 }
-
-/* if i want to customize the table section headers... not sure yet */
-//- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
-//    /* Create custom view to display section header... */
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 1, tableView.frame.size.width, 30)];
-//    [label setFont:[UIFont boldSystemFontOfSize:24]];
-//	GradeSection* gradeSection = [self.gradeSections objectAtIndex:section];
-//	NSString *string = gradeSection.name;
-//    /* Section header is in 0th index... */
-//    [label setText:string];
-//    [view addSubview:label];
-////    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
-//	[view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
-//    return view;
-//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     GradeSection* gradeSection = [self.gradeSections objectAtIndex:section];
@@ -115,8 +108,6 @@
     NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
     GradeSection* gradeSection = [self.gradeSections objectAtIndex:indexPath.section];
     Grade* grade = [gradeSection.grades objectAtIndex:indexPath.row];
-	
-	NSLog(@"%@", self.d2lWebView.request.URL.absoluteString);
 	
     dest.navigationItem.title = grade.name;
 	dest.courseName = self.navigationItem.title;

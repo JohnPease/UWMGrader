@@ -27,7 +27,7 @@
 	if ([self.score isEqualToString:@"Not provided"]) {
 		return -1.0;
 	}
-	NSArray* split = [[self.score stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsSeparatedByString:@"/"];
+	NSArray* split = [[self.score stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@"/"];
 	if ([[split objectAtIndex:0] isEqualToString:@"-"]) {
 		return -1.0;
 	} else {
@@ -39,7 +39,7 @@
 	if ([self.score isEqualToString:@"Not provided"]) {
 		return -1.0;
 	}
-	NSArray* split = [[self.score stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsSeparatedByString:@"/"];
+	NSArray* split = [[self.score stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@"/"];
 	if ([[split objectAtIndex:1] isEqualToString:@"-"]) {
 		return -1.0;
 	} else {

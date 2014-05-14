@@ -12,12 +12,14 @@
 #import "Parser.h"
 #import "Course.h"
 #import "Grade.h"
+#import "Reachability.h"
 
 @interface ClassTableViewController ()
 @property(nonatomic)int webViewLoads;
 @property(nonatomic,strong)Parser* parser;
 @property(nonatomic)MBProgressHUD* activityHud;
 @property(nonatomic)UIRefreshControl* refreshControl;
+@property(nonatomic)Reachability* reachability;
 @end
 
 @implementation ClassTableViewController
@@ -39,6 +41,7 @@
 	self.webViewLoads			= 0;
 	self.parser					= [[Parser alloc] init];
 	self.refreshControl			= [[UIRefreshControl alloc] init];
+	self.reachability			= [[Reachability alloc] init];
 	
 	[self.tableView addSubview:self.refreshControl];
 	[self.refreshControl addTarget:self action:@selector(refreshTableData) forControlEvents:UIControlEventValueChanged];
@@ -56,6 +59,12 @@
 }
 
 - (void)refreshTableData {
+	if (![self.reachability networkConnection]) {
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"Network Connection Error" message:@"You need a network connection to do this" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[error show];
+		[self.refreshControl endRefreshing];
+		return;
+	}
 	self.courses = [self.parser getCoursesFrom:[NSString stringWithContentsOfURL:self.d2lWebView.request.URL encoding:NSASCIIStringEncoding error:nil]];
 	[self.refreshControl endRefreshing];
 	[self.tableView reloadData];
@@ -104,6 +113,11 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if (![self.reachability networkConnection]) {
+		UIAlertView* error = [[UIAlertView alloc] initWithTitle:@"Network Connection Error" message:@"You need a network connection to do this" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[error show];
+		return;
+	}
 	if ([segue.identifier isEqualToString:@"logoutSegue"]) {
 		[self.navigationController popViewControllerAnimated:YES];
 	} else if ([segue.identifier isEqualToString:@"GradesSegue"]) {
